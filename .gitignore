@@ -1,0 +1,22 @@
+# IDEs and editors
+.idea
+.vscode
+.project
+*.code-workspace
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+/node_modules
+/docker-build.env
+/config.docker.yaml

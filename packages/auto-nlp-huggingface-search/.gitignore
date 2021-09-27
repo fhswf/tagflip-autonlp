@@ -1,0 +1,14 @@
+# IDEs and editors
+/.idea
+.vscode
+.project
+*.code-workspace
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+.env
+
+venv

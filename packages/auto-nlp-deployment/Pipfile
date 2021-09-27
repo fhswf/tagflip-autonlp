@@ -1,0 +1,39 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+mlflow = ">=1.16.0"
+fastapi = "*"
+fastapi-utils = "*"
+pydantic = "*"
+python-dotenv = "*"
+pyyaml = "*"
+paramiko = "*"
+aioschedule = "*"
+tempenv = "*"
+psutil = "*"
+func_timeout = "*"
+GitPython = "*"
+wget = "*"
+kubernetes = "*"
+boto3 = "*"
+docker = "*"
+dramatiq = "*"
+dramatiq_abort = { extras = ["redis"], version = "*" }
+redis = "*"
+uvicorn = { extras = ["standard", ], version = "*" }
+celery = "*"
+expiringdict = "*"
+
+[dev-packages]
+pytest = "*"
+pytest-mock = "*"
+pytest-asyncio = "*"
+pytest-subprocess = "*"
+pytest-securestore = "*"
+pytest-dotenv = "*"
+
+[requires]
+python_version = "3.8"

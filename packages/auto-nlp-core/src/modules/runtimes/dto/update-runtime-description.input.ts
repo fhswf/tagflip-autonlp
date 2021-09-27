@@ -1,0 +1,9 @@
+import { InputType, PartialType, PickType } from '@nestjs/graphql';
+import { ProfileDescription } from '../../trainings/entities/profile-description.entity';
+import { RuntimeDescription } from '../entities/runtime-description.entity';
+import { Training } from '../../trainings/entities/training.entity';
+
+@InputType()
+export class UpdateRuntimeDescriptionInput extends PartialType(
+  PickType(RuntimeDescription, ['runtime', 'parameters'] as const, InputType),
+) {}

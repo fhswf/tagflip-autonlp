@@ -1,0 +1,24 @@
+{
+  "name": "auto-nlp-huggingface-search",
+  "version": "0.1.0",
+  "description": "Service for searching HuggingFace API.",
+  "author": "Timo Neuhaus",
+  "license": "MIT",
+  "scripts": {
+    "install": "run-script-os",
+    "install:linux": "python -m venv ./venv && /bin/bash -c 'export PIPENV_IGNORE_VIRTUALENVS=1 && source ./venv/bin/activate && pipenv install'",
+    "start": "run-script-os",
+    "start:linux": "/bin/bash -c 'source ./venv/bin/activate && pipenv run uvicorn --app-dir ./src --port 8086 main:app'",
+    "start-dev": "run-script-os",
+    "start-dev:linux": "/bin/bash -c 'source ./venv/bin/activate && pipenv run uvicorn --app-dir ./src --port 8086 --reload main:app'"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.2.0",
+    "@semantic-release/release-notes-generator": "^9.0.2",
+    "run-script-os": "^1.1.6",
+    "semantic-release": "^17.4.1"
+  }
+}

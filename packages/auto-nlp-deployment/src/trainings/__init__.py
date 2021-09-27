@@ -1,0 +1,1 @@
+from trainings.training_service import TrainingService

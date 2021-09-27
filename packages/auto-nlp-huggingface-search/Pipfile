@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+fastapi-utils = "*"
+pydantic = "*"
+python-dotenv = "*"
+pyyaml = "*"
+datasets = "*"
+transformers = "*"
+huggingface_hub = "*"
+packaging = "*"
+expiringdict = "*"
+uvicorn = {extras = [ "standard",], version = "*"}
+appdirs = "*"
+openpyxl = "*"
+aioscheduler = "*"
+
+[dev-packages]
+aiounittest = "*"
+
+[requires]
+python_version = "3.8"

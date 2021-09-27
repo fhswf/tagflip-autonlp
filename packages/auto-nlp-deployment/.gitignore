@@ -1,0 +1,19 @@
+# ignore venv
+venv
+
+__pycache__
+
+.idea
+
+# ignore test examples
+!/tests/**
+!/tests/examples/
+/tests/examples/*
+!/tests/examples/keras_mnist_docker
+!/tests/examples/keras_mnist_docker_gpu
+
+.env
+
+config/runtime-environments.yaml
+config/config.development.yaml
+config/config.development.yaml

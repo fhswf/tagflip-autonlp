@@ -1,0 +1,66 @@
+name: train-huggingface
+
+docker_env:
+  image: registry.docker.n.euhaus.net/huggingface-pytorch-gpu:latest
+  environment: [
+      "MLFLOW_TRACKING_URI",
+      "MLFLOW_TRACKING_USERNAME",
+      "MLFLOW_TRACKING_PASSWORD",
+      "MLFLOW_S3_ENDPOINT_URL",
+      "AWS_ACCESS_KEY_ID",
+      "AWS_SECRET_ACCESS_KEY",
+  ]
+
+
+entry_points:
+  main:
+    parameters:
+      project_id: string
+      training_id: string
+
+      tagflip_host: string
+      dataset_name: string
+      subset_name: { type: string, default: "default" }
+      dataset_provider_name: { type: string, default: "" }
+
+      model_name: string
+      model_revision: { type: string, default: "main" }
+      config_name: string
+      tokenizer_name: string
+
+      num_train_epochs: { type: float, default: 6.0 }
+
+      use_auth_token: { type: string, default: "false" }
+      logging_steps: { type: int, default: 500 }
+
+      search_hyperparams: { type: string, default: "false" }
+      trials : { type: int, default: 1 }
+
+    command: |
+      python3 hf_generic_token_classification_workflow.py \
+        \
+        --project_id {project_id} \
+        --training_id {training_id} \
+        \
+        --model_name {model_name} \
+        --model_revision {model_revision} \
+        --config_name {config_name} \
+        --tokenizer_name {tokenizer_name} \
+        \
+        --tagflip_host {tagflip_host} \
+        --dataset_name {dataset_name} \
+        --subset_name {subset_name} \
+        --dataset_provider_name {dataset_provider_name} \
+        \
+        --evaluation_strategy epoch \
+        --logging_steps {logging_steps} \
+        --num_train_epochs {num_train_epochs} \
+        --load_best_model_at_end true \
+        --metric_for_best_model f1 \
+        --greater_is_better true \
+        \
+        --output_dir ./output \
+        --logging_first_step true \
+        \
+        --search_hyperparams {search_hyperparams} \
+        --trials {trials}

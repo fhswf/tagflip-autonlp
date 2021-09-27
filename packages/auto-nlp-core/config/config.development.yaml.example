@@ -1,0 +1,9 @@
+dataset-providers:
+  tagflip:
+    type: tagflip
+    config:
+      api: <URL to TagFlip backend>
+
+  huggingface:
+    type: huggingface
+

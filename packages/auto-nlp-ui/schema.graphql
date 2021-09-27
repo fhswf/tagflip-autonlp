@@ -1,0 +1,308 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Dataset {
+    id: ID!
+    name: String!
+    providerName: String!
+    subsets: [DatasetSubset!]!
+}
+
+type DatasetAssignment {
+    datasetName: String!
+    id: ObjectID!
+    providerName: String!
+    subsetName: String!
+}
+
+type DatasetSubset {
+    id: ID!
+    name: String!
+}
+
+type Deployment {
+    deploymentId: String
+    id: ObjectID!
+    info: DeploymentInfo!
+    project: Project!
+    run: Run!
+    runtimeDescription: RuntimeDescription!
+}
+
+type DeploymentInfo {
+    deploymentId: String!
+    endpoint: Endpoint
+    proxyEndpoint: Endpoint
+    runtime: String!
+    status: String!
+}
+
+type Endpoint {
+    method: String!
+    signature: JSON
+    url: String!
+}
+
+type Metric {
+    lastValue: JSON
+    name: String!
+    runId: ID!
+    steps: [MetricStep!]
+}
+
+type MetricDefinition {
+    description: String!
+    name: String!
+    precision: Int
+    set: String!
+    type: String!
+}
+
+type MetricStep {
+    step: Float!
+    timestamp: DateTime!
+    value: JSON!
+}
+
+type Model {
+    id: ID!
+    languages: [String!]!
+    meta: ModelMeta
+    name: String!
+    profiles: [Profile!]!
+}
+
+type ModelMeta {
+    description: String
+    source: ModelSourceMeta
+}
+
+type ModelScript {
+    executors: [String!]!
+    fixedParameters: [ParameterDefinition!]!
+    hyperParameters: [ParameterDefinition!]!
+    metrics: [MetricDefinition!]
+    trainingParameters: [ParameterDefinition!]!
+    url: String!
+}
+
+type ModelSourceMeta {
+    url: String
+}
+
+type Mutation {
+    cancelRun(runId: String!): Run!
+    createDeployment(createDeploymentInput: CreateDeploymentInput!): Deployment!
+    createProject(createProjectInput: CreateProjectInput!): Project!
+    createTraining(createTrainingInput: CreateTrainingInput!): Training!
+    removeDeployment(id: ObjectID!): Deployment!
+    removeProject(id: ObjectID!): Project!
+    removeTraining(id: ObjectID!): Training!
+    removeTrainingSoft(id: ObjectID!): Training!
+    updateDeployment(id: ObjectID!, updateDeploymentInput: UpdateDeploymentInput!): Deployment!
+    updateProject(id: ObjectID!, updateProjectInput: UpdateProjectInput!): Project!
+    updateTraining(id: ObjectID!, updateTrainingInput: UpdateTrainingInput!): Training!
+}
+
+type ParameterDefinition {
+    choice: JSON
+    default: JSON
+    description: String
+    name: String!
+    optional: Boolean
+    range: JSON
+    readableName: String
+    regex: String
+    type: String
+}
+
+type Profile {
+    defaultTrainingMinutes: Int!
+    description: String!
+    name: String!
+    script: ModelScript!
+    taskType: String!
+}
+
+type ProfileDescription {
+    hyperParameters: JSON!
+    id: ObjectID!
+    profile: String!
+    trainingParameters: JSON!
+}
+
+type Project {
+    dataset: DatasetAssignment
+    description: String
+    id: ObjectID!
+    name: String!
+    taskType: String!
+    taskTypeName: String!
+}
+
+type Query {
+    datasetProviders: [String!]!
+    datasetsByType(datasetProvider: String!, taskType: TaskType!): [Dataset!]!
+    deployment(id: ObjectID!): Deployment!
+    deploymentRuntimeEnvironmentByName(name: String!): RuntimeEnvironment!
+    deploymentRuntimeEnvironments: [RuntimeEnvironment!]!
+    deployments(limit: Int = 10, offset: Int = 0, projectId: ObjectID!): [Deployment!]!
+    deploymentsCount(projectId: ObjectID!): Int!
+    metricForRun(metric: String!, runId: String!): Metric!
+    metricsForRun(runId: String!): [Metric!]!
+    model(id: String!): Model!
+    models: [Model!]!
+    modelsByTask(taskType: TaskType!): [Model!]!
+    project(id: ObjectID!): Project!
+    projects: [Project!]!
+    runParameters(runId: String!): RunParameters!
+    taskTypes: [TaskTypeEntity!]!
+    testDeployment(id: ObjectID!, input: JSON!): JSON!
+    training(id: ObjectID!): Training!
+    trainingRuntimeEnvironmentByName(name: String!): RuntimeEnvironment!
+    trainingRuntimeEnvironments: [RuntimeEnvironment!]!
+    trainings(limit: Int = 10, offset: Int = 0, projectId: ObjectID!): [Training!]!
+    trainingsCount(projectId: ObjectID!): Int!
+}
+
+type Run {
+    dashboardUrl: String
+    id: ObjectID!
+    project: Project!
+    runId: String!
+    status: RunStatus
+    topMetricForRun: Metric
+    training: Training
+}
+
+type RunParameters {
+    parameters: JSON!
+    runId: String!
+}
+
+type RuntimeDescription {
+    id: ObjectID!
+    parameters: JSON
+    runtime: String!
+}
+
+type RuntimeEnvironment {
+    description: String
+    name: String!
+    parameters: [ParameterDefinition!]
+    type: String
+}
+
+type TaskTypeEntity {
+    id: ID!
+    label: String
+    short: String
+}
+
+type Training {
+    earliestStartTime: DateTime!
+    id: ObjectID!
+    latestEndTime: DateTime!
+    model: Model!
+    profileDescription: ProfileDescription!
+    project: Project!
+    queueMessageId: String
+    run: Run
+    runtimeDescription: RuntimeDescription!
+}
+
+enum RunStatus {
+    CANCELLING
+    FAILED
+    FINISHED
+    KILLED
+    RUNNING
+    SCHEDULED
+    UNKNOWN
+}
+
+"The supported task types."
+enum TaskType {
+    "Token Classification"
+    Token_Classification
+}
+
+input CreateDeploymentInput {
+    run: ObjectID!
+    runtimeDescription: CreateRuntimeDescriptionInput!
+}
+
+input CreateProfileDescriptionInput {
+    hyperParameters: JSON!
+    profile: String!
+    trainingParameters: JSON!
+}
+
+input CreateProjectInput {
+    description: String
+    name: String!
+    taskType: String!
+}
+
+input CreateRuntimeDescriptionInput {
+    parameters: JSON
+    runtime: String!
+}
+
+input CreateTrainingInput {
+    earliestStartTime: DateTime!
+    latestEndTime: DateTime!
+    model: String!
+    profileDescription: CreateProfileDescriptionInput!
+    project: ObjectID!
+    runtimeDescription: CreateRuntimeDescriptionInput!
+}
+
+input UpdateDatasetAssignmentInput {
+    datasetName: String
+    providerName: String
+    subsetName: String
+}
+
+input UpdateDeploymentInput {
+    runtimeDescription: UpdateRuntimeDescriptionInput!
+}
+
+input UpdateProfileDescriptionInput {
+    hyperParameters: JSON!
+    profile: String!
+    trainingParameters: JSON!
+}
+
+input UpdateProjectInput {
+    dataset: UpdateDatasetAssignmentInput
+    description: String
+    name: String
+    taskType: String
+}
+
+input UpdateRuntimeDescriptionInput {
+    parameters: JSON
+    runtime: String
+}
+
+input UpdateTrainingInput {
+    earliestStartTime: DateTime
+    latestEndTime: DateTime
+    profileDescription: UpdateProfileDescriptionInput!
+    runtimeDescription: UpdateRuntimeDescriptionInput!
+}
+
+
+"The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."
+scalar JSON
+
+"A field whose value conforms with the standard mongodb object ID as described here: https://docs.mongodb.com/manual/reference/method/ObjectId/#ObjectId. Example: 5e5677d71bdc2ae76344968c"
+scalar ObjectID
+
+"A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."
+scalar DateTime

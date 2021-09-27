@@ -1,0 +1,4 @@
+dataset-providers:
+  huggingface:
+    type: "huggingface"
+

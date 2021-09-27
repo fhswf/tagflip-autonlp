@@ -1,0 +1,72 @@
+models:
+  - name: BERT German cased
+    meta:
+      description: |
+        Pre-trained BERT Model for German Language.
+      source:
+        url: https://huggingface.co/dbmdz/bert-base-german-cased
+    languages:
+      - de
+    profiles:
+      - name: Minimal configuration
+        task: Token_Classification
+        description: This configuration requires minimal manual effort. Only the number of epochs has to be configured.
+        default-training-minutes: 360
+        script:
+          url: https://github.com/tnte/autonlp-scripts.git#subdirectory=generic-huggingface-token-classification
+          executors:
+            - docker
+            - kubernetes
+          metrics:
+            eval_f1: { description: "Eval F1 (micro average)", set: eval, type: float }
+            eval_precision: { description: "Eval Precision", set: eval, type: float }
+            eval_recall: { description: "Eval Recall", set: eval, type: float }
+            eval_loss: { description: "Eval Cross Entropy Loss", set: eval, type: float }
+            eval_accuracy: { description: "Eval Accuracy", set: eval, type: float }
+            loss: { description: "Train Cross Entropy Loss", set: train, type: float }
+            learning_rate: { description: "Learning rate", set: train, type: float }
+          fixed-parameters:
+            model_name: dbmdz/bert-base-german-cased
+            config_name: dbmdz/bert-base-german-cased
+            tokenizer_name: dbmdz/bert-base-german-cased
+            logging_steps: 500
+          hyper-parameters:
+            num_train_epochs: { type: float, optional: true, default: 6.0, description: "Determines how often all training samples will be presented to the model. Typically a value between 1 and 10 is a good point to start. Experiment with it in multiple trainings." }
+              #          training-parameters:
+              #            logging_steps: { type: int, optional: true, default: 500, description: "Number of steps between two metric evaluations during training. Low values will slow down training massively" }
+
+  - name: ELECTRA Discriminator German cased
+    description: Pre-trained ELECTRA Discriminator Model for German Language.
+    meta:
+      source:
+        url: https://huggingface.co/dbmdz/electra-base-german-europeana-cased-discriminator
+    languages:
+      - de
+    profiles:
+      - name: Minimal configuration
+        task: Token_Classification
+        description: This configuration requires minimal manual effort. Only the number of epochs has to be configured.
+        default-training-minutes: 360
+        script:
+          url: https://github.com/tnte/autonlp-scripts.git#subdirectory=generic-huggingface-token-classification
+          executors:
+            - docker
+            - kubernetes
+          metrics:
+            eval_f1: { description: "Eval F1 (micro average)", set: eval, type: float }
+            eval_precision: { description: "Eval Precision", set: eval, type: float }
+            eval_recall: { description: "Eval Recall", set: eval, type: float }
+            eval_loss: { description: "Eval Cross Entropy Loss", set: eval, type: float }
+            eval_accuracy: { description: "Eval Accuracy", set: eval, type: float }
+            loss: { description: "Train Cross Entropy Loss", set: train, type: float }
+            learning_rate: { description: "Learning rate", set: train, type: float }
+          fixed-parameters:
+            model_name: dbmdz/bert-base-german-cased
+            config_name: dbmdz/bert-base-german-cased
+            tokenizer_name: dbmdz/bert-base-german-cased
+            logging_steps: 500
+          hyper-parameters:
+            num_train_epochs: { type: float, optional: true, default: 6.0, description: "Determines how often all training samples will be presented to the model. Typically a value between 1 and 10 is a good point to start. Experiment with it in multiple trainings." }
+            #          training-parameters:
+            #            logging_steps: { type: int, optional: true, default: 500, description: "Number of steps between two metric evaluations during training. Low values will slow down training massively" }
+

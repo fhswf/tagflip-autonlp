@@ -1,0 +1,33 @@
+{
+  "name": "@fhswf/tagflip",
+  "version": "3.0.0",
+  "description": "A web based tool for NLP projects.",
+  "workspaces": [
+    "packages/auto-nlp-core",
+    "packages/auto-nlp-ui",
+    "packages/auto-nlp-deployment",
+    "packages/auto-nlp-docker-images",
+    "packages/auto-nlp-workflow-lib",
+    "packages/auto-nlp-huggingface-search",
+    "packages/auto-nlp-shared-js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tnte/tagflip.git"
+  },
+  "license": "MIT",
+  "private": true,
+  "contributors": [
+    {
+      "name": "Timo Neuhaus",
+      "email": "timo@n.euhaus.net"
+    },
+    {
+      "name": "Christian Gawron",
+      "email": "gawron.christian@fh-swf.de"
+    }
+  ],
+  "devDependencies": {
+    "yalc": "^1.0.0-pre.53"
+  }
+}

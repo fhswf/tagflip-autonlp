@@ -1,0 +1,51 @@
+dataset-providers:
+  tagflip.old:
+    type: "tagflip"
+    config:
+      api: 'https://url-to-tagflip-v1-api'
+
+  huggingface:
+    type: "huggingface"
+
+training-environments:
+  docker:
+    - name: "some-docker-host"
+      description: Docker training on some-docker-host
+      ssh:
+        username: "some-user"
+        host: "some-docker-host"
+        port: 22
+      parameters:
+        gpu_id: { choice: [ 0,1 ] }
+
+    - name: "localhost"
+      parameters:
+        gpu_id: { choice: [ 0 ] }
+
+  kubernetes:
+    - name: "minikube"
+      description: Local kubernetes cluster
+      repository: "some-private-docker-registry"
+
+deployment-environments:
+  docker:
+    - name: "localhost"
+      entrypoint: "http://host.docker.internal:8085"
+      parameters:
+        worker_count: { range: [ 1, 12 ] }
+
+    - name: "some-deployment-host"
+      ssh:
+        username: "some-user"
+        host: "some-deployment-host"
+        port: 22
+      entrypoint: "https://public-url-to-some-deployment-host"
+      parameters:
+        worker_count: { range: [ 1, 16 ] }
+
+
+docker-registries:
+  - name: "some-private-docker-registry"
+    url: "https://some.private.docker.registry"
+    username: "registry-user"
+    password: "registry-password"

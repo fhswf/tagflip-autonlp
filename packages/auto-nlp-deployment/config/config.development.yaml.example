@@ -1,0 +1,23 @@
+training-environments:
+  docker:
+    - name: "localhost"
+      parameters:
+        gpu_id: { choice: [ 0 ] }
+
+  kubernetes:
+    - name: "minikube"
+      description: Local kubernetes cluster
+      repository: "some-private-docker-registry"
+
+deployment-environments:
+  docker:
+    - name: "localhost"
+      entrypoint: "http://localhosts-public-url:8085"
+      parameters:
+        worker_count: { range: [ 1, 12 ] }
+
+docker-registries:
+  - name: "some-private-docker-registry"
+    url: "https://some.private.registry"
+    username: "registry-user"
+    password: "registry-password"
