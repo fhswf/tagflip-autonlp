@@ -22,6 +22,8 @@ logs
 .settings/
 *.sublime-workspace
 
+.yalc
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json

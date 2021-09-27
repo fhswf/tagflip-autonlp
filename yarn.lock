@@ -6227,17 +6227,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"auto-nlp-shared-js@file:../auto-nlp-shared-js::locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui":
+"auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js::locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core":
   version: 0.1.0
-  resolution: "auto-nlp-shared-js@file:../auto-nlp-shared-js#../auto-nlp-shared-js::hash=f0c7d7&locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui"
-  checksum: 3d527897ed819f89077ef48019e78087ecc56c7369f851eb15cb540ab99c3aebe7555832f799d3a582c0fcb9783d9731f0e74160bfd688fe7e59cb7bc39242e2
+  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=2ecf99&locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core"
+  checksum: 9e1b85ba14aae88eb79ea27555ceb6ae7219067e2a6134f62bbc0f82f3b2f81185e930e698f17cba30c37b2533c6bdb721636621a3d90d515db747d7955029aa
   languageName: node
   linkType: hard
 
-"auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js::locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core":
+"auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js::locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui":
   version: 0.1.0
-  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=391ab9&locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core"
-  checksum: 83effe6fc8621b08d9a64b4c17151c67bc274bcd8afa227e09d23a043d22966fca94cfea52f601e70d1ebe59f3831c9af3435bdef921d60b63a37b6bb8e53a95
+  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=2ecf99&locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui"
+  checksum: 9e1b85ba14aae88eb79ea27555ceb6ae7219067e2a6134f62bbc0f82f3b2f81185e930e698f17cba30c37b2533c6bdb721636621a3d90d515db747d7955029aa
   languageName: node
   linkType: hard
 
@@ -6287,7 +6287,7 @@ __metadata:
     "@types/sass": ^1
     antd: ^4.15.2
     app-settings-loader: ^2.0.0
-    auto-nlp-shared-js: ../auto-nlp-shared-js
+    auto-nlp-shared-js: "file:.yalc/auto-nlp-shared-js"
     babel-loader: ^8.2.2
     babel-polyfill: ^6.26.0
     chroma-js: ^2.1.2
