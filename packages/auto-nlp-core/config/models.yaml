@@ -13,7 +13,7 @@ models:
         description: This configuration requires minimal manual effort. Only the number of epochs has to be configured.
         default-training-minutes: 360
         script:
-          url: https://github.com/tnte/autonlp-scripts.git#subdirectory=generic-huggingface-token-classification
+          url: https://github.com/fhswf/tagflip-autonlp.git#subdirectory=packages/auto-nlp-model-projects/generic-huggingface-token-classification
           executors:
             - docker
             - kubernetes

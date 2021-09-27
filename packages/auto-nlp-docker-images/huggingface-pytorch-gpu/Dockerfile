@@ -16,5 +16,5 @@ RUN pip install \
     torchvision>=0.9.1 \
     pandas>=1.2.4 \
     boto3>=1.17.0
-RUN pip install -e "git+https://${github_token}@github.com/tnte/tagflip.git#egg=tagflip&subdirectory=packages/auto-nlp-workflow-lib"
+RUN pip install -e "git+https://${github_token}@github.com/fhswf/tagflip-autonlp.git#egg=tagflip&subdirectory=packages/auto-nlp-workflow-lib"
 
