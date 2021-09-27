@@ -1,7 +1,7 @@
 name: train-huggingface
 
 docker_env:
-  image: registry.docker.n.euhaus.net/huggingface-pytorch-gpu:latest
+  image: ghcr.io/fhswf/tagflip-autolp-huggingface-pytorch-gpu:latest
   environment: [
       "MLFLOW_TRACKING_URI",
       "MLFLOW_TRACKING_USERNAME",
