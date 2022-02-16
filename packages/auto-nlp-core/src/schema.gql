@@ -202,24 +202,24 @@ type Query {
   taskTypes: [TaskTypeEntity!]!
   trainingRuntimeEnvironmentByName(name: String!): RuntimeEnvironment!
   trainingRuntimeEnvironments: [RuntimeEnvironment!]!
-  trainings(offset: Int = 0, limit: Int = 10, projectId: ObjectID!): [Training!]!
+  trainings(projectId: ObjectID!, offset: Int = 0, limit: Int = 10): [Training!]!
   trainingsCount(projectId: ObjectID!): Int!
   training(id: ObjectID!): Training!
   metricsForRun(runId: String!): [Metric!]!
-  metricForRun(metric: String!, runId: String!): Metric!
+  metricForRun(runId: String!, metric: String!): Metric!
   runParameters(runId: String!): RunParameters!
   models: [Model!]!
   modelsByTask(taskType: TaskType!): [Model!]!
   model(id: String!): Model!
   projects: [Project!]!
   project(id: ObjectID!): Project!
-  deployments(offset: Int = 0, limit: Int = 10, projectId: ObjectID!): [Deployment!]!
+  deployments(projectId: ObjectID!, offset: Int = 0, limit: Int = 10): [Deployment!]!
   deploymentsCount(projectId: ObjectID!): Int!
   deployment(id: ObjectID!): Deployment!
-  testDeployment(input: JSON!, id: ObjectID!): JSON!
+  testDeployment(id: ObjectID!, input: JSON!): JSON!
   deploymentRuntimeEnvironmentByName(name: String!): RuntimeEnvironment!
   deploymentRuntimeEnvironments: [RuntimeEnvironment!]!
-  datasetsByType(taskType: TaskType!, datasetProvider: String!): [Dataset!]!
+  datasetsByType(datasetProvider: String!, taskType: TaskType!): [Dataset!]!
   datasetProviders: [String!]!
 }
 
@@ -233,15 +233,15 @@ enum TaskType {
 
 type Mutation {
   createTraining(createTrainingInput: CreateTrainingInput!): Training!
-  updateTraining(updateTrainingInput: UpdateTrainingInput!, id: ObjectID!): Training!
+  updateTraining(id: ObjectID!, updateTrainingInput: UpdateTrainingInput!): Training!
   removeTrainingSoft(id: ObjectID!): Training!
   removeTraining(id: ObjectID!): Training!
   cancelRun(runId: String!): Run!
   createProject(createProjectInput: CreateProjectInput!): Project!
-  updateProject(updateProjectInput: UpdateProjectInput!, id: ObjectID!): Project!
+  updateProject(id: ObjectID!, updateProjectInput: UpdateProjectInput!): Project!
   removeProject(id: ObjectID!): Project!
   createDeployment(createDeploymentInput: CreateDeploymentInput!): Deployment!
-  updateDeployment(updateDeploymentInput: UpdateDeploymentInput!, id: ObjectID!): Deployment!
+  updateDeployment(id: ObjectID!, updateDeploymentInput: UpdateDeploymentInput!): Deployment!
   removeDeployment(id: ObjectID!): Deployment!
 }
 

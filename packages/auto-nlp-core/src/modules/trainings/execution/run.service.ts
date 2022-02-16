@@ -18,7 +18,7 @@ import {
   Scalar,
 } from 'auto-nlp-shared-js';
 import { classToClassFromExist } from 'class-transformer';
-import * as moment from 'moment';
+import moment from 'moment';
 import mongoose, { Model } from 'mongoose';
 import { ParameterDefinition } from '../../../common/entities/parameter-definition.entity';
 import { MongoPostRemoveEvent } from '../../../common/mongo-events/mongo-events.module';
@@ -53,7 +53,7 @@ export class RunService {
     private readonly modelsService: ModelsService,
     @InjectModel(Run.name)
     private readonly runModel: Model<RunDocument>,
-  ) {}
+  ) { }
 
   public async findOneLocally(
     id: mongoose.Types.ObjectId,

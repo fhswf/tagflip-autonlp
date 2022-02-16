@@ -24,6 +24,4 @@ export class DatasetAssignment {
 }
 
 export type DatasetAssignmentDocument = DatasetAssignment & Document;
-export const DatasetAssignmentSchema = SchemaFactory.createForClass(
-  DatasetAssignment,
-);
+export const DatasetAssignmentSchema = SchemaFactory.createForClass(DatasetAssignment);
