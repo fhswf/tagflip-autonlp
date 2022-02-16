@@ -40,16 +40,14 @@ jobs:
 
       # Build auto-nlp-shared-js
       - name: Build auto-nlp-shared-js
-        working-directory: ./packages/auto-nlp-shared-js
         run: |
-          pwd
           yarn run build
           yalc publish 
           cd ../auto-nlp-core
           yalc add auto-nlp-shared-js
           cd ../auto-nlp-ui 
           yalc add auto-nlp-shared-js
-        
+        working-directory: packages/auto-nlp-shared-js 
 
       # Install package dependencies
       - name: Install
