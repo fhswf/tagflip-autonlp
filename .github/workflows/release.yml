@@ -41,6 +41,7 @@ jobs:
       # Build auto-nlp-shared-js
       - name: Build auto-nlp-shared-js
         run: |
+          yarn install --immutable
           yarn run build
           yalc publish 
           cd ../auto-nlp-core
