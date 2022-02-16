@@ -8,6 +8,7 @@ import {
   Form,
   Modal,
   Tag,
+  message,
 } from 'antd';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
@@ -55,9 +56,8 @@ const DataSelection: FunctionComponent<Props> = (props) => {
   } = useQuery<GetProjectBase>(GET_PROJECT_BASE, {
     variables: { projectId: match.params.id },
   });
-  const [updateProject, { data, loading, error }] = useMutation<UpdateProject>(
-    UPDATE_PROJECT,
-  );
+  const [updateProject, { data, loading, error }] =
+    useMutation<UpdateProject>(UPDATE_PROJECT);
 
   const { loading: datasetProvidersLoading } = useQuery<GetDatasetProviders>(
     GET_DATASET_PROVIDERS,
@@ -77,6 +77,7 @@ const DataSelection: FunctionComponent<Props> = (props) => {
       },
     },
   );
+
   const [
     getDatasetsByType,
     { data: datasets, loading: datasetsLoading, error: datasetsError },
@@ -103,8 +104,13 @@ const DataSelection: FunctionComponent<Props> = (props) => {
           isLeaf: true,
         })),
       }));
+      console.log('options: ' + JSON.stringify(options));
       setOptions([...options]);
       setSelectedProvider(null);
+    },
+    onError: (error) => {
+      console.error('dataset query error: %o', error);
+      message.error(`Error while retrieving data from backend: ${error}`);
     },
   });
 
@@ -117,7 +123,7 @@ const DataSelection: FunctionComponent<Props> = (props) => {
   }, [projectData?.project?.dataset]);
 
   const loadData = (selectedOptions) => {
-    const targetOption = selectedOptions[selectedOptions.length - 1];
+    const targetOption = selectedOptions[0];
     targetOption.loading = true;
 
     getDatasetsByType({
@@ -151,6 +157,7 @@ const DataSelection: FunctionComponent<Props> = (props) => {
   const onChange = (value, selectedOptions) => {
     console.log(value, selectedOptions);
   };
+
   const onFinish = (values) => {
     console.log(values);
     updateProject({
