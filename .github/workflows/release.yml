@@ -34,6 +34,10 @@ jobs:
       - name: Install Pipenv
         run: pip install pipenv
 
+      # Set yarn version
+      - name: Set up yarn
+        run: yarn set version 3.x
+
       # Install package dependencies
       - name: Install
         run: yarn install --immutable
