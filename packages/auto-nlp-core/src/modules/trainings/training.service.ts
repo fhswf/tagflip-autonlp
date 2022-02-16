@@ -23,7 +23,7 @@ export class TrainingService {
     private readonly trainingModel: Model<TrainingDocument>,
     @Inject(forwardRef(() => RunService))
     private readonly runService: RunService,
-  ) {}
+  ) { }
 
   async create(
     createTrainingInput: CreateTrainingInput,
@@ -48,7 +48,7 @@ export class TrainingService {
   }
 
   async count(projectId: mongoose.Types.ObjectId): Promise<number> {
-    let query = this.trainingModel
+    const query = this.trainingModel
       .countDocuments({ deleted: false })
       .where('project')
       .equals(projectId);
@@ -56,7 +56,7 @@ export class TrainingService {
   }
 
   async findOne(id: mongoose.Types.ObjectId): Promise<Training> {
-    let result = await this.trainingModel
+    const result = await this.trainingModel
       .findById(id)
       .populate({
         path: 'project',

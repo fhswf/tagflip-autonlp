@@ -41,10 +41,11 @@ const databaseConfigFactory = (configService: ConfigService) => {
           connectionFactory: (connection) => {
             return connection;
           },
-          useFindAndModify: false,
+          // this option is no longer supported
+          // useFindAndModify: false,
         };
       },
     }),
   ],
 })
-export class DatabaseModule {}
+export class DatabaseModule { }

@@ -8,7 +8,7 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { PubSub } from 'apollo-server-express';
+import { PubSub } from 'graphql-subscriptions';
 import { DeploymentStatus } from 'auto-nlp-shared-js';
 import { GraphQLJSON, GraphQLObjectID } from 'graphql-scalars';
 import * as mongoose from 'mongoose';
@@ -31,7 +31,7 @@ export class DeploymentResolver {
     private readonly proxyDeploymentService: ProxyDeploymentService,
     private readonly deploymentExecutionService: DefaultDeploymentExecutionService,
     @Inject(PUB_SUB) private readonly pubSub: PubSub,
-  ) {}
+  ) { }
 
   @Mutation(() => Deployment)
   createDeployment(
