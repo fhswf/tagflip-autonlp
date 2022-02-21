@@ -5367,16 +5367,16 @@ __metadata:
   linkType: soft
 
 "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js::locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core":
-  version: 0.1.0
-  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=58b709&locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core"
-  checksum: 4f91ba7ea1052a8f403686bb342aeb578271d0f9ba35f4028ed0a134361a07add0d6e6e0469122309ecc07a7409656dc4379995df0cbfb64366d55e577e73fb7
+  version: 0.2.0
+  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=9576c5&locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core"
+  checksum: 36b5d0a4f3a9c6c7ae17d8c7169d47324fbdde5205d492cf1971cfb9adbef5a2fe1bf81b9c367ff715ff79d55363e410f5ed9b6196b9a50be480c45818c986af
   languageName: node
   linkType: hard
 
 "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js::locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui":
-  version: 0.1.0
-  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=58b709&locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui"
-  checksum: 4f91ba7ea1052a8f403686bb342aeb578271d0f9ba35f4028ed0a134361a07add0d6e6e0469122309ecc07a7409656dc4379995df0cbfb64366d55e577e73fb7
+  version: 0.2.0
+  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=9576c5&locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui"
+  checksum: 36b5d0a4f3a9c6c7ae17d8c7169d47324fbdde5205d492cf1971cfb9adbef5a2fe1bf81b9c367ff715ff79d55363e410f5ed9b6196b9a50be480c45818c986af
   languageName: node
   linkType: hard
 
