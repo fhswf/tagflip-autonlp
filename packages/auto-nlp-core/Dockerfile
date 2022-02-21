@@ -1,4 +1,4 @@
-FROM node:14.16.1-buster-slim
+FROM node:14.19.0-buster-slim
 
 COPY .yalc/auto-nlp-shared-js /opt/src/app/.yalc/auto-nlp-shared-js
 
@@ -11,4 +11,10 @@ RUN yarn install
 COPY ./client ./client
 COPY ./dist ./dist
 
-CMD ["yarn", "run","start:prod"]
+#temporary fixdocker logs 
+COPY ./src ./src
+COPY tsconfig.json ./
+COPY tsconfig.build.json ./
+
+#CMD ["yarn", "run","start:prod"]
+CMD ["yarn", "run","start"]

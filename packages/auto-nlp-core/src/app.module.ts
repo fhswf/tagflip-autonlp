@@ -21,6 +21,7 @@ import { ProjectsModule } from './modules/projects/projects.module';
 import { TaskTypesModule } from './modules/task-types/task-types.module';
 import { TrainingModule } from './modules/trainings/training.module';
 import { DatabaseModule } from './providers/database/database.module';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 @Module({
   imports: [
@@ -38,7 +39,8 @@ import { DatabaseModule } from './providers/database/database.module';
     DatasetsModule,
     HuggingFaceSearchModule,
     HttpModule,
-    GraphQLModule.forRoot({
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
       autoSchemaFile: path.join(process.cwd(), 'src/schema.gql'),
       installSubscriptionHandlers: true,
     }),
@@ -50,7 +52,7 @@ import { DatabaseModule } from './providers/database/database.module';
   providers: [],
 })
 export class AppModule implements OnModuleInit {
-  constructor(private readonly httpService: HttpService) {}
+  constructor(private readonly httpService: HttpService) { }
 
   onModuleInit() {
     const axios = this.httpService.axiosRef;

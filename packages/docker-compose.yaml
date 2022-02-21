@@ -3,7 +3,7 @@ services:
 
   auto-nlp-core:
     container_name: auto-nlp-core
-    image: registry.docker.n.euhaus.net/auto-nlp-core
+    image: ghcr.io/fhswf/auto-nlp-core
     build:
       context: ./auto-nlp-core
     ports:
@@ -28,7 +28,7 @@ services:
 
   auto-nlp-huggingface-search:
     container_name: auto-nlp-huggingface-search
-    image: registry.docker.n.euhaus.net/auto-nlp-huggingface-search
+    image: ghcr.io/fhswf/auto-nlp-huggingface-search
     build:
       context: ./auto-nlp-huggingface-search
     expose:
@@ -43,7 +43,7 @@ services:
 
   auto-nlp-deployment:
     container_name: auto-nlp-deployment
-    image: registry.docker.n.euhaus.net/auto-nlp-deployment
+    image: ghcr.io/fhswf/auto-nlp-deployment
     build:
       context: auto-nlp-deployment
       args:
@@ -76,7 +76,7 @@ services:
 
   auto-nlp-deployment-executor:
     container_name: auto-nlp-deployment-executor
-    image: registry.docker.n.euhaus.net/auto-nlp-deployment
+    image: ghcr.io/fhswf/auto-nlp-deployment
     entrypoint: pipenv run dramatiq --path="./src" main_dramatiq
     extra_hosts:
       - "host.docker.internal:host-gateway"
