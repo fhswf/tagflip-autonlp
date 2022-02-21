@@ -1,7 +1,8 @@
 import logging
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Dict, final
+from typing import Dict
+from typing_extensions import final
 
 import mlflow
 from mlflow.models import ModelInputExample, ModelSignature
