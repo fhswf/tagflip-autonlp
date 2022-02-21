@@ -19,8 +19,6 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     hot: true,
-    index: path.join(__dirname, 'build', 'index.html'),
-    filename: 'index.bundle.js',
   },
   devtool: 'source-map',
   resolve: {
