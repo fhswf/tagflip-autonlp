@@ -18,8 +18,12 @@
 !.yarn/versions
 .pnp.*
 /node_modules
+**/node_modules
 /docker-build.env
 /config.docker.yaml
+packages/auto-nlp-core/docker.env
+packages/auto-nlp-core/yalc.lock
 packages/auto-nlp-core/config/config.docker.yaml
+packages/auto-nlp-deployment/docker.env
 packages/auto-nlp-deployment/config/config.docker.yaml
-packages/auto-nlp-ui/config/config.docker.json
+**/yalc.lock

@@ -67,11 +67,10 @@ services:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - PYTHON_ENV=${AUTONLP_ENV}
-      - SSH_AUTH_SOCK=/var/run/ssh-agent
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-#      - ~/.ssh:/tmp/.ssh:ro
-      - $SSH_AUTH_SOCK:/var/run/ssh-agent # Forward local machine SSH agent to docker
+      - /home/autonlp/.ssh:/root/.ssh:ro
+#      - $SSH_AUTH_SOCK:/var/run/ssh-agent # Forward local machine SSH agent to docker
     restart: always
 
   auto-nlp-deployment-executor:
@@ -89,11 +88,10 @@ services:
       - REDIS_USER=${REDIS_USER}
       - REDIS_PASSWORD=${REDIS_PASSWORD}
       - PYTHON_ENV=${AUTONLP_ENV}
-      - SSH_AUTH_SOCK=/var/run/ssh-agent
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-#      - ~/.ssh:/tmp/.ssh:ro
-      - $SSH_AUTH_SOCK:/var/run/ssh-agent # Forward local machine SSH agent to docker
+      - /home/autonlp/.ssh:/root/.ssh:ro
+#      - $SSH_AUTH_SOCK:/var/run/ssh-agent # Forward local machine SSH agent to docker
     restart: always
 
   auto-nlp-traefik:
@@ -129,7 +127,7 @@ services:
     image: "mongo:latest"
     container_name: "auto-nlp-mongodb"
     volumes:
-      - "~/auto-nlp/mongodb/data:/data/db"
+      - "/home/autonlp/mongodb/data:/data/db"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USER}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
@@ -143,7 +141,7 @@ services:
     image: "tnte/mlflow-tracking-server"
     container_name: "auto-nlp-mlflow-tracking"
     volumes:
-      - "~/auto-nlp/mlflow:/data"
+      - "/home/autonlp/mlflow:/data"
     ports:
       - ${MLFLOW_TRACKING_PORT:-3005}:5000
     environment:
@@ -161,7 +159,7 @@ services:
     container_name: "auto-nlp-minio"
     command: server /data
     volumes:
-      - "~/auto-nlp/minio:/data"
+      - "/home/autonlp/minio:/data"
     environment:
       MINIO_ROOT_USER: ${AWS_ACCESS_KEY_ID}
       MINIO_ROOT_PASSWORD: ${AWS_SECRET_ACCESS_KEY}

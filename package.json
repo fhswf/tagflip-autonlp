@@ -29,8 +29,5 @@
   ],
   "devDependencies": {
     "yalc": "^1.0.0-pre.53"
-  },
-  "dependencies": {
-    "graphql": "^16.3.0"
   }
 }
