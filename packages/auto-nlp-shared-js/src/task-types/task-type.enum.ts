@@ -1,6 +1,6 @@
 enum TaskType {
   Token_Classification = 'Token_Classification',
-  Text_Classification = 'Text Classification',
+  Text_Classification = 'Text_Classification',
 }
 
 export const TaskTypeLabel = new Map<string, string>([
