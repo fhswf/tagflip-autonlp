@@ -60,36 +60,35 @@ class AutoNLPWorkflow(ABC):
         :param dataset_provider_name: the dataset-provider's name
         :param dataset_client:  an instance of DatasetClient that is being connected to AutoNLP Core API and its dataset API.
         """
-        #if not dataset_provider_name:
-        #    raise AutoNLPWorkflowException("Requiring a dataset_provider_name")
-        #if not dataset_name:
-        #    raise AutoNLPWorkflowException("Requiring a dataset_name")
-        #if not subset_name:
-        #    raise AutoNLPWorkflowException("Requiring a subset_name")
-        #try:
-        #    datasets = dataset_client.load_dataset(dataset_name, subset_name, dataset_provider_name)
-        #except Exception as e:
-        #    raise AutoNLPWorkflowException(f"Could not load dateset " + str(e))
-        #if not datasets:
-        #    raise AutoNLPWorkflowException("Dataset is undefined")
-        #if not any(k in datasets for k in ('valid', 'validation')) \
-        #        or ('valid' in datasets and len(datasets['valid']) == 0) \
-        #        or ('validation' in datasets and len(datasets['validation']) == 0):
-        #    if 'test' not in datasets \
-        #            or ('test' in datasets and len(datasets['test']) == 0):
-        #        valid, test, train = dataset_client.load_dataset(dataset_name, subset_name, dataset_provider_name,
-        #                                                         split=['train[:15%]', 'train[15%:30%]',
-        #                                                                'train[-70%:]'])
-        #    else:
-        #        valid, test, train = dataset_client.load_dataset(dataset_name, subset_name, dataset_provider_name,
-        #                                                         split=['train[:15%]', 'test', 'train[-85%:]'])
+        if not dataset_provider_name:
+            raise AutoNLPWorkflowException("Requiring a dataset_provider_name")
+        if not dataset_name:
+            raise AutoNLPWorkflowException("Requiring a dataset_name")
+        if not subset_name:
+            raise AutoNLPWorkflowException("Requiring a subset_name")
+        try:
+            datasets = dataset_client.load_dataset(dataset_name, subset_name, dataset_provider_name)
+        except Exception as e:
+            raise AutoNLPWorkflowException(f"Could not load dateset " + str(e))
+        if not datasets:
+            raise AutoNLPWorkflowException("Dataset is undefined")
+        if not any(k in datasets for k in ('valid', 'validation')) \
+                or ('valid' in datasets and len(datasets['valid']) == 0) \
+                or ('validation' in datasets and len(datasets['validation']) == 0):
+            if 'test' not in datasets \
+                    or ('test' in datasets and len(datasets['test']) == 0):
+                valid, test, train = dataset_client.load_dataset(dataset_name, subset_name, dataset_provider_name,
+                                                                 split=['train[:15%]', 'train[15%:30%]',
+                                                                        'train[-70%:]'])
+            else:
+                valid, test, train = dataset_client.load_dataset(dataset_name, subset_name, dataset_provider_name,
+                                                                 split=['train[:15%]', 'test', 'train[-85%:]'])
 
-        raw_datasets = load_dataset("imdb")
-            #datasets['train'] = train
-            #datasets['validation'] = valid
-            #datasets['test'] = test
+            datasets['train'] = train
+            datasets['validation'] = valid
+            datasets['test'] = test
 
-        return raw_datasets#datasets
+        return datasets
 
     @abstractmethod
     def before_train(self, datasets: DatasetDict, autonlp_args: AutoNLPArguments, args: Dict[ArgsType, Args],
