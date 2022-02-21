@@ -151,7 +151,7 @@ setup(
         "six==1.16.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
         "smmap==4.0.0; python_version >= '3.5'",
         "sqlalchemy==1.4.20; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'",
-        "sqlparse==0.4.1; python_version >= '3.5'",
+        "sqlparse==0.4.2; python_version >= '3.5'",
         "stevedore==3.3.0; python_version >= '3.6'",
         "tabulate==0.8.9",
         "threadpoolctl==2.2.0; python_version >= '3.6'",
