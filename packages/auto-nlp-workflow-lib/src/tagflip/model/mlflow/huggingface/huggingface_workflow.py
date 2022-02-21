@@ -1,7 +1,8 @@
 import logging
 import signal
 from abc import ABC
-from typing import Any, Dict, NewType, final
+from typing import Any, Dict, NewType
+from typing_extensions import final
 
 import mlflow
 from datasets import DatasetDict

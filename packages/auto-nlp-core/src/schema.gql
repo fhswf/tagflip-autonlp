@@ -227,6 +227,8 @@ type Query {
 enum TaskType {
   """Token Classification"""
   Token_Classification
+  """Text Classification"""
+  Text_Classification
 }
 
 type Mutation {
