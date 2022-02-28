@@ -138,7 +138,7 @@ services:
     restart: always
 
   auto-nlp-mlflow-tracking:
-    image: "tnte/mlflow-tracking-server"
+    image: "ghcr.io/fhswf/mlflow-tracking-server:latest"
     container_name: "auto-nlp-mlflow-tracking"
     volumes:
       - "/home/autonlp/mlflow:/data"
@@ -157,7 +157,7 @@ services:
   auto-nlp-minio:
     image: minio/minio
     container_name: "auto-nlp-minio"
-    command: server /data
+    command: server /data --console-address ":9001"
     volumes:
       - "/home/autonlp/minio:/data"
     environment:
@@ -165,8 +165,10 @@ services:
       MINIO_ROOT_PASSWORD: ${AWS_SECRET_ACCESS_KEY}
     expose:
       - "9000"
+      - "9001"
     ports:
       - "${AUTONLP_MINIO_PORT}:9000"
+      - "${AUTONLP_MINIO_CONSOLE_PORT}:9001"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
       interval: 30s
