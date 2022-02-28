@@ -1780,6 +1780,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fhswf/tagflip@workspace:."
   dependencies:
+    graphql: ^16.3.0
     yalc: ^1.0.0-pre.53
   languageName: unknown
   linkType: soft
