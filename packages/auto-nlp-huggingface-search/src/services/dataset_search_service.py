@@ -190,4 +190,13 @@ class DatasetSearchService(Singleton):
                 return SupportedTask.Token_Classification
             if key.startswith(tuple([f'{x}_tag' for x in ['chunk']])):
                 return SupportedTask.Token_Classification
+            
+        # text with label
+        if "text" in hf_dataset_info.features and "label" in hf_dataset_info.features:
+            return SupportedTask.Text_Classification
+
+        # explicit task type for text classification (via task_templates)
+        for task in hf_dataset_info.task_templates:
+            if task.task == "text-classification":
+                return SupportedTask.Text_Classification
         return None
