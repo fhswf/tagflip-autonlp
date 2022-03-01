@@ -37,7 +37,7 @@ entry_points:
       trials : { type: int, default: 1 }
 
     command: |
-      python3 hf_generic_text_classification_workflow.py \
+      python3 hf_generic_sequence_classification.py \
         \
         --project_id {project_id} \
         --training_id {training_id} \
