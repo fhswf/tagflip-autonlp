@@ -9,6 +9,8 @@ from .autonlp_arguments import AutoNLPArguments
 from .autonlp_workflow_exception import AutoNLPWorkflowException
 from .mlflow.mlflow_savable import MLflowSavable
 
+from datasets import load_dataset
+
 CondaEnv = NewType("CondaEnv", Any)
 DataClass = NewType("DataClass", Any)
 
@@ -81,6 +83,7 @@ class AutoNLPWorkflow(ABC):
             else:
                 valid, test, train = dataset_client.load_dataset(dataset_name, subset_name, dataset_provider_name,
                                                                  split=['train[:15%]', 'test', 'train[-85%:]'])
+
             datasets['train'] = train
             datasets['validation'] = valid
             datasets['test'] = test

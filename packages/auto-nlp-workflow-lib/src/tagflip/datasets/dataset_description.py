@@ -2,7 +2,8 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Field
 from pydantic.fields import Annotated
-from typing import Dict, Any, List, Optional, Union, Literal
+from typing import Dict, Any, List, Optional, Union
+from typing_extensions import Literal
 
 
 class Feature(BaseModel):

@@ -202,44 +202,46 @@ type Query {
   taskTypes: [TaskTypeEntity!]!
   trainingRuntimeEnvironmentByName(name: String!): RuntimeEnvironment!
   trainingRuntimeEnvironments: [RuntimeEnvironment!]!
-  trainings(projectId: ObjectID!, offset: Int = 0, limit: Int = 10): [Training!]!
+  trainings(offset: Int = 0, limit: Int = 10, projectId: ObjectID!): [Training!]!
   trainingsCount(projectId: ObjectID!): Int!
   training(id: ObjectID!): Training!
   metricsForRun(runId: String!): [Metric!]!
-  metricForRun(runId: String!, metric: String!): Metric!
+  metricForRun(metric: String!, runId: String!): Metric!
   runParameters(runId: String!): RunParameters!
   models: [Model!]!
   modelsByTask(taskType: TaskType!): [Model!]!
   model(id: String!): Model!
   projects: [Project!]!
   project(id: ObjectID!): Project!
-  deployments(projectId: ObjectID!, offset: Int = 0, limit: Int = 10): [Deployment!]!
+  deployments(offset: Int = 0, limit: Int = 10, projectId: ObjectID!): [Deployment!]!
   deploymentsCount(projectId: ObjectID!): Int!
   deployment(id: ObjectID!): Deployment!
-  testDeployment(id: ObjectID!, input: JSON!): JSON!
+  testDeployment(input: JSON!, id: ObjectID!): JSON!
   deploymentRuntimeEnvironmentByName(name: String!): RuntimeEnvironment!
   deploymentRuntimeEnvironments: [RuntimeEnvironment!]!
-  datasetsByType(datasetProvider: String!, taskType: TaskType!): [Dataset!]!
+  datasetsByType(taskType: TaskType!, datasetProvider: String!): [Dataset!]!
   datasetProviders: [String!]!
 }
 
 """The supported task types."""
 enum TaskType {
   """Token Classification"""
-  Token_Classification
+  Token_Classification,
+  """Text Classification"""
+  Text_Classification
 }
 
 type Mutation {
   createTraining(createTrainingInput: CreateTrainingInput!): Training!
-  updateTraining(id: ObjectID!, updateTrainingInput: UpdateTrainingInput!): Training!
+  updateTraining(updateTrainingInput: UpdateTrainingInput!, id: ObjectID!): Training!
   removeTrainingSoft(id: ObjectID!): Training!
   removeTraining(id: ObjectID!): Training!
   cancelRun(runId: String!): Run!
   createProject(createProjectInput: CreateProjectInput!): Project!
-  updateProject(id: ObjectID!, updateProjectInput: UpdateProjectInput!): Project!
+  updateProject(updateProjectInput: UpdateProjectInput!, id: ObjectID!): Project!
   removeProject(id: ObjectID!): Project!
   createDeployment(createDeploymentInput: CreateDeploymentInput!): Deployment!
-  updateDeployment(id: ObjectID!, updateDeploymentInput: UpdateDeploymentInput!): Deployment!
+  updateDeployment(updateDeploymentInput: UpdateDeploymentInput!, id: ObjectID!): Deployment!
   removeDeployment(id: ObjectID!): Deployment!
 }
 

@@ -1,2 +1,3 @@
 from .huggingface_tokenclassification_savable import HuggingFaceTokenClassificationSavable
+from .huggingface_sequenceclassification_savable import HuggingFaceSequenceClassificationSavable
 from .huggingface_workflow import HuggingFaceWorkflow

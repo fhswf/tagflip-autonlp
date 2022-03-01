@@ -53,6 +53,7 @@ class DockerDeploymentActor(DeploymentActor):
                         client.images.get(image.name)
                         self.logger.info(f"Found image {image.name} on docker host after build.")
                     except (docker.errors.ContainerError, docker.errors.APIError) as e:
+                        self.logger.info(f"Build of image {image.name} with model {image.model.source} failed: {e}")
                         raise RuntimeError("Image could not be found. Creation might be failed.")
 
                 container_name = DockerDeploymentActor.container_name(deployment_id)

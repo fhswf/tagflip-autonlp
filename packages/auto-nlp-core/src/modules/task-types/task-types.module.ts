@@ -9,6 +9,9 @@ registerEnumType(TaskType, {
     Token_Classification: {
       description: 'Token Classification',
     },
+    Text_Classification: {
+      description: 'Text Classification',
+    },
   },
   description: 'The supported task types.',
 });
