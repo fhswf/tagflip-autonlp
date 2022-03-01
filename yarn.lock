@@ -1780,7 +1780,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fhswf/tagflip@workspace:."
   dependencies:
-    graphql: ^16.3.0
     yalc: ^1.0.0-pre.53
   languageName: unknown
   linkType: soft
@@ -5369,15 +5368,15 @@ __metadata:
 
 "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js::locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core":
   version: 0.2.0
-  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=35b2af&locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core"
-  checksum: 4004e5bfc3498928d6306bb392b1660115b9fe1920b0f2ddf4774d63358513bf556697488a9660cbb36f6ca37493dce35caf8e9a5d73b31712bc8bc74a9bff59
+  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=10bb6d&locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core"
+  checksum: 96d2ce72aac80ef9ce034105372f387d80f9d0b2776f60cf355830c9a590c624ddf411201eb0873b80c6a0e2b68aff302fadceffde99e9ed3cc4d013f819e32d
   languageName: node
   linkType: hard
 
 "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js::locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui":
   version: 0.2.0
-  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=35b2af&locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui"
-  checksum: 4004e5bfc3498928d6306bb392b1660115b9fe1920b0f2ddf4774d63358513bf556697488a9660cbb36f6ca37493dce35caf8e9a5d73b31712bc8bc74a9bff59
+  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=10bb6d&locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui"
+  checksum: 96d2ce72aac80ef9ce034105372f387d80f9d0b2776f60cf355830c9a590c624ddf411201eb0873b80c6a0e2b68aff302fadceffde99e9ed3cc4d013f819e32d
   languageName: node
   linkType: hard
 
