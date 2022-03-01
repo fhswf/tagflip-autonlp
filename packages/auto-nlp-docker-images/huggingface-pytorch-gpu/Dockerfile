@@ -1,6 +1,8 @@
 FROM pytorch/pytorch:1.8.1-cuda11.1-cudnn8-runtime
 
-ARG github_token
+LABEL org.opencontainers.image.source https://github.com/fhswf/autonlp
+
+#ARG github_token
 
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -16,5 +18,6 @@ RUN pip install \
     torchvision>=0.9.1 \
     pandas>=1.2.4 \
     boto3>=1.17.0
-RUN pip install -e "git+https://${github_token}@github.com/fhswf/tagflip-autonlp.git#egg=tagflip&subdirectory=packages/auto-nlp-workflow-lib"
+#RUN pip install -e "git+https://${github_token}@github.com/fhswf/tagflip-autonlp.git#egg=tagflip&subdirectory=packages/auto-nlp-workflow-lib"
+RUN pip install -e "git+https://github.com/fhswf/tagflip-autonlp.git#egg=tagflip&subdirectory=packages/auto-nlp-workflow-lib"
 
