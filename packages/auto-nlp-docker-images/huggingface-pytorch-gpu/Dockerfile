@@ -9,11 +9,11 @@ RUN apt-get update && \
     apt-get install -y git
 
 RUN pip install \
-    mlflow>=1.18 \
-    datasets>=1.5.0 \
+    mlflow>=1.24 \
+    datasets>=1.18.0 \
     transformers>=4.5.1 \
     seqeval>=1.2.2 \
-    scikit-learn==0.24.1 \
+    scikit-learn==0.24.2 \
     tensorflow>=2 \
     torchvision>=0.9.1 \
     pandas>=1.2.4 \
