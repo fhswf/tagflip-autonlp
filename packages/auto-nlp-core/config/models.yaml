@@ -48,7 +48,7 @@ models:
         description: This configuration requires minimal manual effort. Only the number of epochs has to be configured.
         default-training-minutes: 360
         script:
-          url: https://github.com/fhswf/tagflip-autonlp/tree/text-classification/packages/auto-nlp-model-projects/generic-huggingface-token-classification
+          url: https://github.com/fhswf/tagflip-autonlp.git#subdirectory=packages/auto-nlp-model-projects/generic-huggingface-token-classification
           executors:
             - docker
             - kubernetes
@@ -84,7 +84,7 @@ models:
         description: This configuration requires minimal manual effort. Only the number of epochs has to be configured.
         default-training-minutes: 360
         script:
-          url: https://github.com/fhswf/tagflip-autonlp/tree/text-classification/packages/auto-nlp-model-projects/generic-huggingface-sequence-classification
+          url: https://github.com/fhswf/tagflip-autonlp.git#subdirectory=packages/auto-nlp-model-projects/generic-huggingface-sequence-classification
           executors:
             - docker
             - kubernetes
