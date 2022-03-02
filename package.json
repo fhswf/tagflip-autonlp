@@ -29,5 +29,13 @@
   ],
   "devDependencies": {
     "yalc": "^1.0.0-pre.53"
+  },
+  "dependencies": {
+    "semantic-release": "^19.0.2"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
   }
 }
