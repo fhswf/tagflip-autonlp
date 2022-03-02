@@ -43,6 +43,7 @@ jobs:
         working-directory: ./packages/auto-nlp-shared-js
         run: |
           pwd
+          yarn install
           yarn run build
           yalc publish 
           cd ../auto-nlp-core
