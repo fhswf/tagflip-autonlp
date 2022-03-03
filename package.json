@@ -27,6 +27,9 @@
       "email": "gawron.christian@fh-swf.de"
     }
   ],
+  "scripts": {
+    "build": "yarn workspace auto-nlp-shared-js exec yalc push"
+  },
   "devDependencies": {
     "yalc": "^1.0.0-pre.53"
   },
@@ -37,5 +40,6 @@
     "branches": [
       "main"
     ]
-  }
+  },
+  "packageManager": "yarn@3.2.0"
 }
