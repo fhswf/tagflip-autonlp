@@ -63,6 +63,6 @@ jobs:
 
 
       - name: Release
-        run: yarn workspaces foreach npx semantic-release -e semantic-release-monorepo # TODO: There might be an "intelligent" solution to run only release for changed workspaces... are race-conditions a concern?
+        run: yarn workspaces foreach exec npx semantic-release -e semantic-release-monorepo # TODO: There might be an "intelligent" solution to run only release for changed workspaces... are race-conditions a concern?
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
