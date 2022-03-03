@@ -25,7 +25,6 @@ import {
   GetTrainings,
   GetTrainings_trainings,
 } from '../../../../../apollo/__generated__/GetTrainings';
-import { OnTrainingRunStatusChanged } from '../../../../../apollo/__generated__/OnTrainingRunStatusChanged';
 import {
   CANCEL_RUN,
   DELETE_TRAINING,
@@ -41,8 +40,8 @@ interface OwnProps {}
 type Props = OwnProps;
 
 const TrainingTable: FunctionComponent<Props> = (props) => {
-  let match = useRouteMatch<{ id: string }>('/project/:id/');
-  let history = useHistory();
+  const match = useRouteMatch<{ id: string }>('/project/:id/');
+  const history = useHistory();
 
   const [getTrainings, { data, loading, error }] = useLazyQuery<GetTrainings>(
     GET_TRAININGS,

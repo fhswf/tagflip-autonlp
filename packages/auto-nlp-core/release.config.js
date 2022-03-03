@@ -1,5 +1,5 @@
 module.exports = {
-  useFactory: databaseConfigFactory,
+  //useFactory: databaseConfigFactory,
 
   plugins: [
     '@semantic-release/commit-analyzer',
@@ -10,4 +10,5 @@ module.exports = {
   ],
   extends: 'semantic-release-monorepo',
   preset: 'angular',
+  branches: ['main'],
 };

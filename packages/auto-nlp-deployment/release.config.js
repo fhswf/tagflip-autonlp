@@ -7,4 +7,5 @@ module.exports = {
   ],
   extends: 'semantic-release-monorepo',
   preset: 'angular',
+  branches: ['main'],
 };
