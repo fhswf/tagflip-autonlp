@@ -68,7 +68,7 @@ jobs:
           (cd packages/auto-nlp-shared-js/; yalc publish)
           (cd packages/auto-nlp-ui; yalc add auto-nlp-shared-js)
           (cd packages/auto-nlp-core; yalc add auto-nlp-shared-js)
-          yarn install
+          yarn install --mode=skip-build
           yarn workspaces foreach exec npx semantic-release -e semantic-release-monorepo 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
