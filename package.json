@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/tnte/tagflip.git"
+    "url": "https://github.com/fhswf/tagflip-autonlp"
   },
   "license": "MIT",
   "private": true,
