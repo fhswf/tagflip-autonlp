@@ -5348,15 +5348,15 @@ __metadata:
 
 "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js::locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core":
   version: 0.2.0
-  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=c4c392&locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core"
-  checksum: fdca95dd58b2e0b9e1ecb3d200553a4d0dae5fd6201593dd7536bbc5e379b3a7bbe5e0ff0098b9332293a63cf8e8f045387f9da0312d9cff38445c540afe2577
+  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=1586a3&locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core"
+  checksum: 67d8b87d2001a90c9e068e880e3500f83f13eaa05f282f16c42bd8c21f0fbea82ae81304b65a347ddf044d22db05a5add0499177eb6e45382e99bd30a5b5916a
   languageName: node
   linkType: hard
 
 "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js::locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui":
   version: 0.2.0
-  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=c4c392&locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui"
-  checksum: fdca95dd58b2e0b9e1ecb3d200553a4d0dae5fd6201593dd7536bbc5e379b3a7bbe5e0ff0098b9332293a63cf8e8f045387f9da0312d9cff38445c540afe2577
+  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=1586a3&locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui"
+  checksum: 67d8b87d2001a90c9e068e880e3500f83f13eaa05f282f16c42bd8c21f0fbea82ae81304b65a347ddf044d22db05a5add0499177eb6e45382e99bd30a5b5916a
   languageName: node
   linkType: hard
 
@@ -5372,7 +5372,7 @@ __metadata:
     "@types/jest": ^26.0.23
     jest: ^26.6.3
     run-script-os: ^1.1.6
-    semantic-release: ^17.4.7
+    semantic-release: ^17.4.1
     typescript: ^4.2.4
   languageName: unknown
   linkType: soft
@@ -17781,7 +17781,7 @@ react-router-modal@next:
   languageName: node
   linkType: hard
 
-"semantic-release@npm:^17.4.1, semantic-release@npm:^17.4.7":
+"semantic-release@npm:^17.4.1":
   version: 17.4.7
   resolution: "semantic-release@npm:17.4.7"
   dependencies:
