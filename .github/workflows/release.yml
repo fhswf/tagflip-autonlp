@@ -64,6 +64,7 @@ jobs:
 
       - name: Release
         run: |
+          yarn workspace auto-nlp-shared-js run install
           yarn workspace auto-nlp-shared-js run build
           yarn workspace auto-nlp-shared-js exec yalc push
           yarn install
