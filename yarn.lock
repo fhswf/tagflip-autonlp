@@ -2232,7 +2232,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/apollo@npm:^10.0.2":
+"@nestjs/apollo@npm:^10.0.6":
   version: 10.0.6
   resolution: "@nestjs/apollo@npm:10.0.6"
   dependencies:
@@ -2291,7 +2291,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/common@npm:^8.3.0":
+"@nestjs/common@npm:^8.4.0":
   version: 8.4.0
   resolution: "@nestjs/common@npm:8.4.0"
   dependencies:
@@ -2332,7 +2332,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/core@npm:^8.3.0":
+"@nestjs/core@npm:^8.4.0":
   version: 8.4.0
   resolution: "@nestjs/core@npm:8.4.0"
   dependencies:
@@ -2374,20 +2374,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/event-emitter@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@nestjs/event-emitter@npm:1.0.0"
+"@nestjs/event-emitter@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@nestjs/event-emitter@npm:1.1.0"
   dependencies:
-    eventemitter2: 6.4.4
+    eventemitter2: 6.4.5
   peerDependencies:
     "@nestjs/common": ^7.0.0 || ^8.0.0
     "@nestjs/core": ^7.0.0 || ^8.0.0
     reflect-metadata: ^0.1.12
-  checksum: 4a066e5caa1172d83383064d303ae721978dd4a0bbef8c0e4f28f9d349f63e3864fe96ffe8e06695243428472c14803de37e38ca0e0cc52e286a9911d42c9282
+  checksum: cd45e21b88abb5a1ecacd335f47613843a17109056c95f183b4909812a84cf6d2661f3747ff3fc13765518f18df2f9a7c92ba74f21a094df8486baf3b4725396
   languageName: node
   linkType: hard
 
-"@nestjs/graphql@npm:^10.0.2":
+"@nestjs/graphql@npm:^10.0.6":
   version: 10.0.6
   resolution: "@nestjs/graphql@npm:10.0.6"
   dependencies:
@@ -2451,7 +2451,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/platform-express@npm:^8.3.0":
+"@nestjs/platform-express@npm:^8.4.0":
   version: 8.4.0
   resolution: "@nestjs/platform-express@npm:8.4.0"
   dependencies:
@@ -3635,15 +3635,6 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 3b3d683498267096c8aca03652702243b1e087bc20e77a9abe74fdbee1c89c8283ee41c47d245cda2f422483b01980d70a1030b92a8ff24b280e0aa868241a8b
-  languageName: node
-  linkType: hard
-
-"@types/immutable@npm:^3.8.7":
-  version: 3.8.7
-  resolution: "@types/immutable@npm:3.8.7"
-  dependencies:
-    immutable: "*"
-  checksum: f4aec6d40bdc1e5dba32ea6c76da24403e7bfcd4df1cc3a337ba06723e7b55d33af6403cf50873296f93a0760fcc0bf983a0f410cd6084adffa4a1160faead24
   languageName: node
   linkType: hard
 
@@ -5227,15 +5218,15 @@ __metadata:
     "@apollo/gateway": ^0.48.1
     "@fhswf/tagflip-common": ^2.0.0
     "@graphql-tools/schema": ^8.3.1
-    "@nestjs/apollo": ^10.0.2
+    "@nestjs/apollo": ^10.0.6
     "@nestjs/cli": ^8.2.1
-    "@nestjs/common": ^8.3.0
+    "@nestjs/common": ^8.4.0
     "@nestjs/config": ^1.2.0
-    "@nestjs/core": ^8.3.0
-    "@nestjs/event-emitter": ^1.0.0
-    "@nestjs/graphql": ^10.0.2
+    "@nestjs/core": ^8.4.0
+    "@nestjs/event-emitter": ^1.1.0
+    "@nestjs/graphql": ^10.0.6
     "@nestjs/mongoose": ^9.0.2
-    "@nestjs/platform-express": ^8.3.0
+    "@nestjs/platform-express": ^8.4.0
     "@nestjs/schedule": ^1.0.2
     "@nestjs/schematics": ^8.0.6
     "@nestjs/serve-static": ^2.2.2
@@ -5253,7 +5244,6 @@ __metadata:
     "@types/express": ^4.17.11
     "@types/fs-readdir-recursive": ^1.0.0
     "@types/glob": ^7.1.3
-    "@types/immutable": ^3.8.7
     "@types/jest": ^26.0.20
     "@types/js-yaml": ^4
     "@types/json-stable-stringify": ^1.0.32
@@ -5279,6 +5269,7 @@ __metadata:
     eslint: ^7.20.0
     eslint-config-prettier: ^8.1.0
     eslint-plugin-prettier: ^3.3.1
+    express: ^4.17.3
     glob: ^7.1.6
     graphql: ^16.3.0
     graphql-scalars: ^1.9.3
@@ -5348,15 +5339,15 @@ __metadata:
 
 "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js::locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core":
   version: 0.2.0
-  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=d0d099&locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core"
-  checksum: 9a0dd0bd37976d26dc7c3410c68bc3f3b4cab82ede3ff53e79d5aa1645cfc318a4b148c18550fd6b60a2ef46ed2c92d8bf8ab76102e467ca7160f822a8a2167c
+  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=1586a3&locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core"
+  checksum: 67d8b87d2001a90c9e068e880e3500f83f13eaa05f282f16c42bd8c21f0fbea82ae81304b65a347ddf044d22db05a5add0499177eb6e45382e99bd30a5b5916a
   languageName: node
   linkType: hard
 
 "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js::locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui":
   version: 0.2.0
-  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=d0d099&locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui"
-  checksum: 9a0dd0bd37976d26dc7c3410c68bc3f3b4cab82ede3ff53e79d5aa1645cfc318a4b148c18550fd6b60a2ef46ed2c92d8bf8ab76102e467ca7160f822a8a2167c
+  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=1586a3&locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui"
+  checksum: 67d8b87d2001a90c9e068e880e3500f83f13eaa05f282f16c42bd8c21f0fbea82ae81304b65a347ddf044d22db05a5add0499177eb6e45382e99bd30a5b5916a
   languageName: node
   linkType: hard
 
@@ -8665,10 +8656,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter2@npm:6.4.4":
-  version: 6.4.4
-  resolution: "eventemitter2@npm:6.4.4"
-  checksum: b5e707039973d5a770bc4c64255604df66df3a1f63389dccb7118af163b9f790ca7596463d7868426339301ad9de5ef1c3f4a9c7ac3b93874c5ca792916dede1
+"eventemitter2@npm:6.4.5":
+  version: 6.4.5
+  resolution: "eventemitter2@npm:6.4.5"
+  checksum: 84504f9cf0cc30205cdd46783fe9df3733435e5097f13070b678023110b5ef07847651808ae280cd94c42cd5976880211c7a40321a8ff8fa56f7c5f9c5c11960
   languageName: node
   linkType: hard
 
@@ -8800,7 +8791,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express@npm:4.17.3":
+"express@npm:4.17.3, express@npm:^4.17.3":
   version: 4.17.3
   resolution: "express@npm:4.17.3"
   dependencies:
@@ -10886,7 +10877,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immutable@npm:*, immutable@npm:^4.0.0-rc.12":
+"immutable@npm:^4.0.0-rc.12":
   version: 4.0.0
   resolution: "immutable@npm:4.0.0"
   checksum: 4b5e9181e4d5fa06728a481835ec09c86367e5d03268666c95b522b7644ab891098022e4479a43c4c81a68f2ed82f10751ce5d33e208d7b873b6e7f9dfaf4d87
