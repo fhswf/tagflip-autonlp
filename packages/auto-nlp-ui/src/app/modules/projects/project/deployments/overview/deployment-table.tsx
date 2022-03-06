@@ -4,7 +4,7 @@ import { BackTop, Button, Col, Modal, Row, Table, Tag } from 'antd';
 import { Deployment } from 'auto-nlp-core/dist/modules/deployments/entities/deployment.entitiy';
 import { DeploymentStatus } from 'auto-nlp-shared-js';
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 import { GetDeployments } from '../../../../../apollo/__generated__/GetDeployments';
 import {
   GET_DEPLOYMENTS,
@@ -19,15 +19,13 @@ interface OwnProps {}
 type Props = OwnProps;
 
 const DeploymentTable: FunctionComponent<Props> = (props) => {
-  let match = useRouteMatch<{ id: string }>('/project/:id/');
+  const match = useMatch('/project/:id/*');
 
-  const [
-    getDeployments,
-    { data, loading, error },
-  ] = useLazyQuery<GetDeployments>(GET_DEPLOYMENTS, {
-    pollInterval: 30 * 1000,
-    fetchPolicy: 'network-only',
-  });
+  const [getDeployments, { data, loading, error }] =
+    useLazyQuery<GetDeployments>(GET_DEPLOYMENTS, {
+      pollInterval: 30 * 1000,
+      fetchPolicy: 'network-only',
+    });
 
   const [removeDeployment, { loading: removeDeploymentLoading }] = useMutation<{
     id: string;
@@ -177,7 +175,9 @@ const DeploymentTable: FunctionComponent<Props> = (props) => {
     Modal.error({
       title: error.name,
       content: error.message,
-      onOk() {},
+      onOk() {
+        console.log('ok');
+      },
     });
     return null;
   }

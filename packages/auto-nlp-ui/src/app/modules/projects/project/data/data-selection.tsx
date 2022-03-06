@@ -11,7 +11,7 @@ import {
   message,
 } from 'antd';
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 import { GetDatasetProviders } from '../../../../apollo/__generated__/GetDatasetProviders';
 import { GetDatasetsByType } from '../../../../apollo/__generated__/GetDatasetsByType';
 import { GetProjectBase } from '../../../../apollo/__generated__/GetProjectBase';
@@ -23,7 +23,9 @@ import {
 import { GET_PROJECT_BASE, UPDATE_PROJECT } from '../../../../apollo/projects';
 import FormHelp from '../../../../components/form-help';
 
-interface OwnProps {}
+interface OwnProps {
+  project: string;
+}
 
 type Props = OwnProps;
 
@@ -44,7 +46,7 @@ const tailLayout = {
 };
 
 const DataSelection: FunctionComponent<Props> = (props) => {
-  let match = useRouteMatch<{ id: string }>('/project/:id/');
+  const match = useMatch('/project/:id/*');
   const [options, setOptions] = useState<CascadeOption[]>(null);
   const [selectedProvider, setSelectedProvider] = useState<CascadeOption>(null);
   const [editActive, setEditActive] = useState<boolean>(false);

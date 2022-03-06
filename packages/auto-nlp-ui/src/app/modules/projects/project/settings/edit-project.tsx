@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { Button, Form, Input, Modal, PageHeader, Spin } from 'antd';
 
 import React from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 import { CreateProject } from '../../../../apollo/__generated__/CreateProject';
 import { GetProjectBase } from '../../../../apollo/__generated__/GetProjectBase';
 import { GetTaskTypes } from '../../../../apollo/__generated__/GetTaskTypes';
@@ -18,9 +18,7 @@ const tailLayout = {
 
 export const EditProject = () => {
   const [form] = Form.useForm();
-  const match = useRouteMatch<{ id: string; page?: string }>(
-    '/project/:id/:page?',
-  );
+  const match = useMatch('/project/:id/*');
 
   const {
     data: projectData,
