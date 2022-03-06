@@ -5187,7 +5187,7 @@ __metadata:
     acorn: ^8.7.0
     apollo-server-express: ^3.6.3
     app-root-path: ^3.0.0
-    auto-nlp-shared-js: "file:.yalc/auto-nlp-shared-js"
+    auto-nlp-shared-js: "workspace:*"
     cache-manager: ^3.4.3
     class-transformer: 0.4.0
     class-transformer-validator: ^0.9.1
@@ -5265,27 +5265,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js::locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core":
-  version: 0.2.0
-  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=e9733e&locator=auto-nlp-core%40workspace%3Apackages%2Fauto-nlp-core"
-  dependencies:
-    class-transformer: ^0.5.1
-    js-yaml: ^4.1.0
-  checksum: 980b1ae33fdc2e1655f773138267a7d73a773ee5d2e9e59768c47ffc3c98cb399745abbddb230e21a364172016bc1fa48c36fcfc0c8cd5008c3a24ad788c2351
-  languageName: node
-  linkType: hard
-
-"auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js::locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui":
-  version: 0.2.0
-  resolution: "auto-nlp-shared-js@file:.yalc/auto-nlp-shared-js#.yalc/auto-nlp-shared-js::hash=e9733e&locator=auto-nlp-ui%40workspace%3Apackages%2Fauto-nlp-ui"
-  dependencies:
-    class-transformer: ^0.5.1
-    js-yaml: ^4.1.0
-  checksum: 980b1ae33fdc2e1655f773138267a7d73a773ee5d2e9e59768c47ffc3c98cb399745abbddb230e21a364172016bc1fa48c36fcfc0c8cd5008c3a24ad788c2351
-  languageName: node
-  linkType: hard
-
-"auto-nlp-shared-js@workspace:packages/auto-nlp-shared-js":
+"auto-nlp-shared-js@workspace:*, auto-nlp-shared-js@workspace:packages/auto-nlp-shared-js":
   version: 0.0.0-use.local
   resolution: "auto-nlp-shared-js@workspace:packages/auto-nlp-shared-js"
   dependencies:
@@ -5336,7 +5316,7 @@ __metadata:
     antd: ^4.18.7
     app-settings-loader: ^2.0.0
     auto-nlp-core: "workspace:*"
-    auto-nlp-shared-js: "file:.yalc/auto-nlp-shared-js"
+    auto-nlp-shared-js: "workspace:*"
     babel-loader: ^8.2.2
     babel-polyfill: ^6.26.0
     chroma-js: ^2.1.2

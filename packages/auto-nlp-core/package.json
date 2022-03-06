@@ -44,7 +44,7 @@
     "acorn": "^8.7.0",
     "apollo-server-express": "^3.6.3",
     "app-root-path": "^3.0.0",
-    "auto-nlp-shared-js": "file:.yalc/auto-nlp-shared-js",
+    "auto-nlp-shared-js": "workspace:*",
     "cache-manager": "^3.4.3",
     "class-transformer": "0.4.0",
     "class-transformer-validator": "^0.9.1",
