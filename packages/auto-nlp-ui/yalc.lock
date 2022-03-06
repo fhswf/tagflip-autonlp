@@ -1,9 +1,0 @@
-{
-  "version": "v1",
-  "packages": {
-    "auto-nlp-shared-js": {
-      "signature": "93da18103e2bfb02a3368b8f9e6bc115",
-      "file": true
-    }
-  }
-}

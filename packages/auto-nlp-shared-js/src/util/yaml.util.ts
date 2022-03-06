@@ -1,8 +1,8 @@
 import * as yaml from 'js-yaml';
+import * as fs from 'fs';
 
 export const loadYaml = (file): Record<string, any> => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  return loadYamlString(require(file));
+  return loadYamlString(fs.readFileSync(require.resolve(file)).toString('utf8'));
 };
 
 export const loadYamlString = (yamlString: string): Record<string, any> => {
