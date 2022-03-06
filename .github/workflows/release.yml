@@ -65,9 +65,6 @@ jobs:
       - name: Release
         run: |
           npm install -g yalc
-          (cd packages/auto-nlp-shared-js/; yalc publish)
-          (cd packages/auto-nlp-ui; yalc add auto-nlp-shared-js)
-          (cd packages/auto-nlp-core; yalc add auto-nlp-shared-js)
           yarn install --mode=skip-build
           yarn workspaces foreach -v exec npx semantic-release -e semantic-release-monorepo 
         env:
