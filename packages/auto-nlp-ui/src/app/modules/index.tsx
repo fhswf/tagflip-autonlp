@@ -2,7 +2,7 @@ import { Breadcrumb, Col, Layout, Row } from 'antd';
 
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import { Link, Redirect, Route, Switch } from 'react-router-dom';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import { NavAddMenu } from './nav-add-menu';
 import { NavProjectSelector } from './nav-project-selector';
@@ -44,16 +44,15 @@ const App = () => {
       <Content className={classes.content}>
         <Breadcrumb className={classes.breadcrumb}>
           {breadcrumbs.map(({ match, breadcrumb }) => (
-            <Link key={match.url} to={match.url}>
-              <Breadcrumb.Item>{breadcrumb}</Breadcrumb.Item>
-            </Link>
+            <Breadcrumb.Item key={match.params.id}>
+              {breadcrumb}
+            </Breadcrumb.Item>
           ))}
         </Breadcrumb>
-        <Switch>
-          <Redirect exact={true} from="/" to="/project" />
-          <Route path="/project" exact={true} component={ProjectOverview} />
-          <Route path="/project/:id" component={ProjectLayout} />
-        </Switch>
+        <Routes>
+          <Route path="/project" element={<ProjectOverview />} />
+          <Route path="/project/:id/*" element={<ProjectLayout />} />
+        </Routes>
       </Content>
       <Footer style={{ textAlign: 'center' }}>
         ©2021 South Westphalia University of Applied Sciences

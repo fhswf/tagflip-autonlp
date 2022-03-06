@@ -19,7 +19,7 @@ import {
 import { RunStatus } from 'auto-nlp-shared-js';
 import moment from 'moment';
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useNavigate, useMatch } from 'react-router-dom';
 import { DeleteTraining } from '../../../../../apollo/__generated__/DeleteTraining';
 import {
   GetTrainings,
@@ -40,8 +40,8 @@ interface OwnProps {}
 type Props = OwnProps;
 
 const TrainingTable: FunctionComponent<Props> = (props) => {
-  const match = useRouteMatch<{ id: string }>('/project/:id/');
-  const history = useHistory();
+  const match = useMatch('/project/:id/*');
+  const navigate = useNavigate();
 
   const [getTrainings, { data, loading, error }] = useLazyQuery<GetTrainings>(
     GET_TRAININGS,
@@ -306,7 +306,9 @@ const TrainingTable: FunctionComponent<Props> = (props) => {
     Modal.error({
       title: error.name,
       content: error.message,
-      onOk() {},
+      onOk() {
+        console.log('ok');
+      },
     });
     return null;
   }
@@ -344,7 +346,7 @@ const TrainingTable: FunctionComponent<Props> = (props) => {
         visible={deployableTrainingId}
         onSubmitted={async () => {
           setDeployableTraining(null);
-          history.push(`${match.url}/deployment`);
+          navigate(`${match.params.id}/deployment`);
         }}
         onCancel={() => setDeployableTraining(null)}
       />
