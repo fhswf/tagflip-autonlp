@@ -1,6 +1,7 @@
 import * as yaml from 'js-yaml';
 
 export const loadYaml = (file): Record<string, any> => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return loadYamlString(require(file));
 };
 
