@@ -1,6 +1,6 @@
 {
   "name": "auto-nlp-shared-js",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "description": "Shared scripts and interfaces for TagFlip.",
   "author": "Timo Neuhaus",
   "license": "MIT",
@@ -14,7 +14,7 @@
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/commit-analyzer": "^9.0.1",
-    "@semantic-release/git": "^10.0.0",
+    "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.2",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@types/jest": "^26.0.23",
@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "class-transformer": "^0.5.1",
+    "fs": "^0.0.1-security",
     "js-yaml": "^4.1.0"
   }
 }
