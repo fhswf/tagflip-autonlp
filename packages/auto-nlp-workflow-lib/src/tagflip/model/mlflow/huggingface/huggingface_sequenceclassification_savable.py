@@ -10,6 +10,7 @@ from mlflow.models import ModelSignature
 from mlflow.pyfunc import PythonModel
 from mlflow.types import ColSpec, DataType, Schema, TensorSpec
 from mlflow.utils.environment import _mlflow_conda_env
+from transformers.pipelines.pt_utils import KeyDataset
 from transformers import (
     AutoModelForSequenceClassification,
     AutoTokenizer,
@@ -26,10 +27,12 @@ Config = NewType("Config", Any)
 
 logger = logging.getLogger(__name__)
 
+
 class HuggingFaceSequenceClassificationSavable(MLflowSavable):
     """
     Saves a NLP model for text classification that has been trained using Hugging Face Transformer API.
     """
+
     def __init__(self, trainer: Trainer, label_list: List[str]):
         """
         The constructor
@@ -49,13 +52,13 @@ class HuggingFaceSequenceClassificationSavable(MLflowSavable):
 
     def log_args(self, _: AutoNLPArguments) -> LogArgs:
         conda_env = _mlflow_conda_env(
-                additional_conda_deps=[],
-                additional_pip_deps=[
-                    "pandas~={}".format(pd.__version__),
-                    "torch~={}".format(torch.__version__),
-                    "transformers=={}".format(transformers.__version__),
-                    "mlflow=={}".format(mlflow.__version__),
-                ])
+            additional_conda_deps=[],
+            additional_pip_deps=[
+                "pandas~={}".format(pd.__version__),
+                "torch~={}".format(torch.__version__),
+                "transformers=={}".format(transformers.__version__),
+                "mlflow=={}".format(mlflow.__version__),
+            ])
 
         return LogArgs(artifact_path="huggingface-pyfunc",
                        input_example=[
@@ -63,8 +66,8 @@ class HuggingFaceSequenceClassificationSavable(MLflowSavable):
                            "This is some other sentence."
                        ],
                        signature=ModelSignature(
-                               Schema([ColSpec(type=DataType.string)]),
-                               Schema([TensorSpec(np.dtype('str'), (-1, -1, 2))])
+                           Schema([ColSpec(type=DataType.string)]),
+                           Schema([TensorSpec(np.dtype('str'), (-1, -1, 2))])
                        ),
                        conda_env=conda_env
                        )
@@ -84,14 +87,17 @@ class HuggingFaceSequenceClassificationSavable(MLflowSavable):
             def load_context(self, context):
                 model_artifact_path = context.artifacts[model_identifier]
 
-                self.trained_model = AutoModelForSequenceClassification.from_pretrained(f"{model_artifact_path}")
-                self.tokenizer = AutoTokenizer.from_pretrained(f"{model_artifact_path}")
+                self.trained_model = AutoModelForSequenceClassification.from_pretrained(
+                    f"{model_artifact_path}")
+                self.tokenizer = AutoTokenizer.from_pretrained(
+                    f"{model_artifact_path}")
                 self.label_list = label_list
 
             def predict(self, context, input_df):
                 sentences = input_df.values.tolist()
                 sentences = list(map(lambda sentence: sentence[0], sentences))
-                classifier = pipeline("text-classification", model=self.trained_model, tokenizer=self.tokenizer)
+                pipe = pipeline(
+                    "text-classification", model=self.trained_model, tokenizer=self.tokenizer)
                 pipe_sentences = []
                 for pipe_out in pipe(KeyDataset(sentences, "text"), batch_size=8, truncation="only_first"):
                     pipe_sentences.append(pipe_out)

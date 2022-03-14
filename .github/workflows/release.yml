@@ -64,7 +64,6 @@ jobs:
 
       - name: Release
         run: |
-          npm install -g yalc
           yarn install --mode=skip-build
           yarn workspaces foreach -v exec npx semantic-release -e semantic-release-monorepo 
         env:

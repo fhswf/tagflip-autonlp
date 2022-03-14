@@ -54,7 +54,8 @@ class UploadCommand(Command):
             pass
 
         self.status("Building Source and Wheel (universal) distribution…")
-        os.system("{0} setup.py sdist bdist_wheel --universal".format(sys.executable))
+        os.system(
+            "{0} setup.py sdist bdist_wheel --universal".format(sys.executable))
 
         self.status("Uploading the package to PyPI via Twine…")
         os.system("twine upload dist/*")
@@ -100,7 +101,7 @@ setup(
         "colorama==0.4.4; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
         "colorlog==5.0.1",
         "databricks-cli==0.14.3",
-        "datasets==1.18.0",
+        "datasets==1.18.3",
         "dill==0.3.4; python_version >= '2.7' and python_version != '3.0'",
         "docker==5.0.0; python_version >= '3.6'",
         "entrypoints==0.3; python_version >= '2.7'",
@@ -111,7 +112,7 @@ setup(
         "gitpython==3.1.18; python_version >= '3.6'",
         "greenlet==1.1.0; python_version >= '3'",
         "gunicorn==20.1.0; platform_system != 'Windows'",
-        "huggingface-hub==0.0.12; python_version >= '3.6'",
+        "huggingface-hub==0.4.0; python_version >= '3.6'",
         "idna==2.10; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
         "itsdangerous==2.0.1; python_version >= '3.6'",
         "jinja2==3.0.1; python_version >= '3.6'",
@@ -158,8 +159,8 @@ setup(
         "tokenizers==0.10.3",
         "torch==1.8.1",
         "torchvision==0.9.1",
-        "tqdm==4.61.2; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
-        "transformers==4.8.2",
+        "tqdm==4.63.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+        "transformers==4.17.0",
         "typing-extensions==3.10.0.0; python_version < '3.9'",
         "typingx==0.5.3",
         "url-normalize==1.4.3; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'",
@@ -183,5 +184,5 @@ setup(
         "Programming Language :: Python :: Implementation :: PyPy",
     ],
     # $ setup.py publish support.
-    cmdclass={"upload": UploadCommand,},
+    cmdclass={"upload": UploadCommand, },
 )
