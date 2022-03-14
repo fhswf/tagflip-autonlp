@@ -1,8 +1,7 @@
 import * as yaml from 'js-yaml';
-import * as fs from 'fs';
 
 export const loadYaml = (file): Record<string, any> => {
-  return loadYamlString(fs.readFileSync(require.resolve(file)).toString('utf8'));
+  return loadYamlString(require(file));
 };
 
 export const loadYamlString = (yamlString: string): Record<string, any> => {
