@@ -228,7 +228,9 @@ enum RunStatus {
 "The supported task types."
 enum TaskType {
     "Token Classification"
-    Token_Classification
+    Token_Classification,
+    "Text Classification"
+    Text_Classification
 }
 
 input CreateDeploymentInput {
