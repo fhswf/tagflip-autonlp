@@ -11,6 +11,7 @@
 
 # Yarn
 .yarn/*
+**/.yarn/cache
 !.yarn/patches
 !.yarn/releases
 !.yarn/plugins
@@ -21,6 +22,7 @@
 **/node_modules
 **/yalc.lock
 
+# Files containing secret and/or internal data
 /docker-build.env
 /config.docker.yaml
 **/docker.env

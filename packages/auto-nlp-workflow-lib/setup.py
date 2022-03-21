@@ -156,7 +156,7 @@ setup(
         "stevedore==3.3.0; python_version >= '3.6'",
         "tabulate==0.8.9",
         "threadpoolctl==2.2.0; python_version >= '3.6'",
-        "tokenizers==0.10.3",
+        "tokenizers==0.11.6",
         "torch==1.8.1",
         "torchvision==0.9.1",
         "tqdm==4.63.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
