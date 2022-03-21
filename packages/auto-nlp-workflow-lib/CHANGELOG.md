@@ -1,3 +1,10 @@
+# [auto-nlp-workflow-lib-v1.0.3](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-workflow-lib-v1.0.2...auto-nlp-workflow-lib-v1.0.3) (2022-03-21)
+
+
+### Bug Fixes
+
+* version bumps for workflow library ([4fc1034](https://github.com/fhswf/tagflip-autonlp/commit/4fc1034e13eca8989c6524d01243749cff8c429b))
+
 # [auto-nlp-workflow-lib-v1.0.2](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-workflow-lib-v1.0.1...auto-nlp-workflow-lib-v1.0.2) (2022-03-14)
 
 
