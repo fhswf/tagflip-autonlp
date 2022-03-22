@@ -15,9 +15,6 @@ COPY packages/auto-nlp-shared-js/package.json ./packages/auto-nlp-shared-js/pack
 COPY packages/auto-nlp-core/package.json ./packages/auto-nlp-core/package.json
 COPY packages/auto-nlp-ui/package.json ./packages/auto-nlp-ui/package.json
 
-# temporary patch package
-COPY .yarn/patches/@nestjs-apollo-npm-10.0.7-e683d5ad24.patch ./packages/auto-nlp-core/
-
 RUN yarn install
 
 COPY tsconfig.json ./
@@ -25,9 +22,9 @@ COPY tsconfig.json ./
 # auto-nlp-core 
 COPY packages/auto-nlp-shared-js/ packages/auto-nlp-shared-js/
 COPY packages/auto-nlp-core/ packages/auto-nlp-core/
+COPY packages/auto-nlp-ui/ packages/auto-nlp-ui/
 
-RUN yarn workspace auto-nlp-shared-js run build
-RUN yarn workspace auto-nlp-core run build
+RUN yarn workspaces foreach -t -v run build
 
 WORKDIR packages/auto-nlp-core
 
