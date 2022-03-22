@@ -8,7 +8,7 @@ import {
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ScheduleModule } from '@nestjs/schedule';
-//import { ServeStaticModule } from '@nestjs/serve-static';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import * as path from 'path';
 import { PubSubModule } from './common/graphql/pub-sub/pub-sub.module';
 import { MongoEventsModule } from './common/mongo-events/mongo-events.module';
@@ -27,6 +27,9 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
   imports: [
     EventEmitterModule.forRoot(),
     ScheduleModule.forRoot(),
+    ServeStaticModule.forRoot({
+      rootPath: path.join(__dirname, '..', '..', 'auto-nlp-ui', 'build'),
+    }),
     PubSubModule,
     MongoEventsModule,
     DatabaseModule,

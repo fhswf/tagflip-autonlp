@@ -5,7 +5,9 @@ services:
     container_name: auto-nlp-core
     image: ghcr.io/fhswf/auto-nlp-core
     build:
-      context: ..
+      context: .
+      args:
+        - ASSET_PATH=${ASSET_PATH}
     ports:
       - "${AUTONLP_CORE_PORT:-3000}:${AUTONLP_CORE_PORT:-3000}"
     extra_hosts:
@@ -30,7 +32,7 @@ services:
     container_name: auto-nlp-huggingface-search
     image: ghcr.io/fhswf/auto-nlp-huggingface-search
     build:
-      context: ./auto-nlp-huggingface-search
+      context: packages/auto-nlp-huggingface-search
     expose:
       - "3001"
     extra_hosts:
@@ -45,7 +47,7 @@ services:
     container_name: auto-nlp-deployment
     image: ghcr.io/fhswf/auto-nlp-deployment
     build:
-      context: auto-nlp-deployment
+      context: packages/auto-nlp-deployment
       args:
         PORT: 3002
     expose:
