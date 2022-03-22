@@ -64,7 +64,7 @@ jobs:
 
       - name: Release
         run: |
-          yarn install --mode=skip-build
+          yarn install 
           yarn workspaces foreach -v exec npx semantic-release -e semantic-release-monorepo 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

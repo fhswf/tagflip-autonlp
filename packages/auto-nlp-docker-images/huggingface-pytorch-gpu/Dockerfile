@@ -12,6 +12,5 @@ RUN apt-get update && \
 #    seqeval>=1.2.2 \
 #    tensorflow>=2 \
 
-
-RUN pip install -e "git+https://github.com/fhswf/tagflip-autonlp.git#egg=tagflip&subdirectory=packages/auto-nlp-workflow-lib"
+RUN pip install -e 'git+https://github.com/fhswf/tagflip-autonlp.git#egg=tagflip&subdirectory=packages/auto-nlp-workflow-lib'
 
