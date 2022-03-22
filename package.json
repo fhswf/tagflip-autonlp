@@ -35,8 +35,5 @@
   "packageManager": "yarn@3.2.0",
   "resolutions": {
     "@nestjs/apollo@10.0.7": "patch:@nestjs/apollo@npm:10.0.7#.yarn/patches/@nestjs-apollo-npm-10.0.7-e683d5ad24.patch"
-  },
-  "devDependencies": {
-    "semantic-release-monorepo": "^7.0.5"
   }
 }
