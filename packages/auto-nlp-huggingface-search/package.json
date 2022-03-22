@@ -19,7 +19,7 @@
     "@semantic-release/github": "^7.2.0",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "run-script-os": "^1.1.6",
-    "semantic-release": "^17.4.1",
+    "semantic-release": "^19.0.2",
     "semantic-release-monorepo": "^7.0.5"
   }
 }

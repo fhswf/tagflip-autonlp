@@ -1,19 +1,19 @@
-FROM python:3.8-slim-buster
+FROM python:3.9-slim-buster
 
 ARG PORT=3002
 ENV AUTONLP_DEPLOYMENT_PORT=${PORT}
 
 RUN apt update && \
-    apt install -y  git \
-                    libcurl4-openssl-dev \
-                    gnupg2 \
-                    pass \
-                    apt-transport-https \
-                    ca-certificates \
-                    curl \
-                    gnupg \
-                    lsb-release \
-                    openssh-client
+  apt install -y  git \
+  libcurl4-openssl-dev \
+  gnupg2 \
+  pass \
+  apt-transport-https \
+  ca-certificates \
+  curl \
+  gnupg \
+  lsb-release \
+  openssh-client
 
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 RUN echo \
