@@ -5,7 +5,7 @@ services:
     container_name: auto-nlp-core
     image: ghcr.io/fhswf/auto-nlp-core
     build:
-      context: ./auto-nlp-core
+      context: ..
     ports:
       - "${AUTONLP_CORE_PORT:-3000}:${AUTONLP_CORE_PORT:-3000}"
     extra_hosts:

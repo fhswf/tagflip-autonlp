@@ -8,7 +8,7 @@ import {
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ScheduleModule } from '@nestjs/schedule';
-import { ServeStaticModule } from '@nestjs/serve-static';
+//import { ServeStaticModule } from '@nestjs/serve-static';
 import * as path from 'path';
 import { PubSubModule } from './common/graphql/pub-sub/pub-sub.module';
 import { MongoEventsModule } from './common/mongo-events/mongo-events.module';
@@ -43,10 +43,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
       driver: ApolloDriver,
       autoSchemaFile: path.join(process.cwd(), 'src/schema.gql'),
       installSubscriptionHandlers: true,
-    }),
-    ServeStaticModule.forRoot({
-      rootPath: path.join(__dirname, '..', 'client'),
-    }),
+    })
   ],
   controllers: [],
   providers: [],
