@@ -127,7 +127,7 @@ setup(
         "packaging==21.0",
         "pandas==1.3.0; python_full_version >= '3.7.1'",
         "pbr==5.6.0; python_version >= '2.6'",
-        "pillow==9.0.0; python_version >= '3.6'",
+        "pillow==9.0.1; python_version >= '3.6'",
         "prettytable==2.1.0; python_version >= '3.6'",
         "prometheus-client==0.11.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
         "prometheus-flask-exporter==0.18.2",
