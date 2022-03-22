@@ -34,10 +34,10 @@ envisset AUTONLP_ENV
 envisset AUTONLP_CORE_PUBLIC_URL
 
 cecho "Building docker"
-docker-compose -f docker-compose.yaml --env-file ../$ENV build || exit
+docker-compose -f docker-compose.yaml --env-file $ENV build || exit
 
 cecho "Pushing images"
-docker-compose -f docker-compose.yaml --env-file ../$ENV push || exit
+docker-compose -f docker-compose.yaml --env-file $ENV push || exit
 
 cecho "Starting services"
-docker-compose -f docker-compose.yaml --env-file ../$ENV up -d || exit
+docker-compose -f docker-compose.yaml --env-file $ENV up -d || exit

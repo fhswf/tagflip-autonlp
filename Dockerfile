@@ -1,6 +1,7 @@
 FROM node:17.7.1-buster-slim
 
-
+ARG ASSET_PATH
+ENV ASSET_PATH=${ASSET_PATH}
 WORKDIR /opt/src/app
 
 COPY .yarn ./.yarn
