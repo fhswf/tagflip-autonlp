@@ -1,0 +1,35 @@
+diff --git a/dist/interfaces/apollo-driver-config.interface.d.ts b/dist/interfaces/apollo-driver-config.interface.d.ts
+index 2d7be201726578f6a02e001536cceba355a086bf..cbddc0c25175eb60fbcd8f49e855e369509b8f16 100644
+--- a/dist/interfaces/apollo-driver-config.interface.d.ts
++++ b/dist/interfaces/apollo-driver-config.interface.d.ts
+@@ -1,6 +1,6 @@
+ import { GqlModuleAsyncOptions, GqlModuleOptions, GqlOptionsFactory, SubscriptionConfig } from '@nestjs/graphql';
+ import { ApolloServerPluginLandingPageGraphQLPlaygroundOptions, Config, GraphQLExecutor } from 'apollo-server-core';
+-import { GraphQLSchema } from 'graphql';
++//import { GraphQLSchema } from 'graphql';
+ export interface ServerRegistration {
+     /**
+      * Path to mount GraphQL API
+@@ -27,7 +27,7 @@ export interface ApolloDriverConfig extends Omit<Config, 'typeDefs'>, ServerRegi
+     /**
+      * Executor factory function
+      */
+-    executorFactory?: (schema: GraphQLSchema) => GraphQLExecutor | Promise<GraphQLExecutor>;
++    executorFactory?: (schema) => GraphQLExecutor | Promise<GraphQLExecutor>;
+     /**
+      * If enabled, "subscriptions-transport-ws" will be automatically registered.
+      */
+diff --git a/package.json b/package.json
+index 72892436cda7b21362b2150efab3db3dcaee20f0..9fcb45b4d7d3b608269f930fbc11bd659fbd5b39 100644
+--- a/package.json
++++ b/package.json
+@@ -38,7 +38,8 @@
+   "dependencies": {
+     "iterall": "1.3.0",
+     "lodash.omit": "4.5.0",
+-    "tslib": "2.3.1"
++    "tslib": "2.3.1",
++    "graphql": "15.3.0"
+   },
+   "peerDependencies": {
+     "@apollo/gateway": "^0.44.1 || ^0.46.0 || ^0.48.0",
