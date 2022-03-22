@@ -52,6 +52,7 @@ entry_points:
         --subset_name {subset_name} \
         --dataset_provider_name {dataset_provider_name} \
         \
+        --save_strategy epoch \
         --evaluation_strategy epoch \
         --logging_steps {logging_steps} \
         --num_train_epochs {num_train_epochs} \
