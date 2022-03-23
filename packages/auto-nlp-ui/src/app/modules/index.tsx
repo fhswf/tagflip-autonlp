@@ -8,7 +8,7 @@ import { NavAddMenu } from './nav-add-menu';
 import { NavProjectSelector } from './nav-project-selector';
 import ProjectNameBreadCrumb from './project-name-breadcrumb';
 import ProjectOverview from './projects';
-import ProjectLayout from './projects/project';
+import ProjectContainer from './projects/project';
 
 const useStyles = createUseStyles({
   content: { padding: '0 0px' },
@@ -50,8 +50,8 @@ const App = () => {
           ))}
         </Breadcrumb>
         <Routes>
+          <Route path="/project/:id/*" element={<ProjectContainer />} />
           <Route path="/project" element={<ProjectOverview />} />
-          <Route path="/project/:id/*" element={<ProjectLayout />} />
           <Route path="" element={<Navigate to="/project" />} />
         </Routes>
       </Content>
