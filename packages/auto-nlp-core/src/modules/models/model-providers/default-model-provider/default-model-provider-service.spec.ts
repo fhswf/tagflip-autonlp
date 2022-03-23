@@ -8,6 +8,7 @@ describe('DefaultModelProviderService', () => {
   let module: TestingModule;
 
   beforeEach(async () => {
+    process.env.MODEL_FILE = "config/models.yaml"
     module = await Test.createTestingModule({
       imports: [ConfigModule.forRoot()],
       providers: [DefaultModelProviderService],

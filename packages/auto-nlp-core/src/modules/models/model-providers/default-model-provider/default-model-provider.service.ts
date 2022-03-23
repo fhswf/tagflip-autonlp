@@ -12,10 +12,12 @@ export class DefaultModelProviderService implements ModelProvider {
   private readonly models: Map<string, Model>;
 
   constructor() {
-    const model_file = path.resolve(
-      path.join(appRoot.toString(), './config'),
-      './models.yaml',
-    );
+    const model_file_path = process.env.MODEL_FILE;
+    const model_file = model_file_path ?
+      path.resolve(model_file_path) : path.resolve(
+        path.join(appRoot.toString(), './config'),
+        './models.yaml',
+      );
     const yaml = loadYaml(model_file);
     const modelArray: Model[] = plainToClass(Model, yaml['models'] as any[]);
     this.models = new Map(modelArray.map((x) => [x.id, x]));

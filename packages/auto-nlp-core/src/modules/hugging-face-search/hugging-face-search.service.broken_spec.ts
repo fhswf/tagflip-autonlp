@@ -1,12 +1,17 @@
+/** This test suite does not work in a CI environment without mocking the HH search service */
+
+
 import { HttpModule, HttpService } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import { HuggingFaceSearchService } from './hugging-face-search.service';
+import { TaskType } from 'auto-nlp-shared-js';
 
 describe('HuggingFaceSearchService', () => {
   let service: HuggingFaceSearchService;
 
   beforeEach(async () => {
+    process.env.AUTONLP_HF_SEARCH_SERVICE_URL = 'http://172.25.0.6:3001'
     const moduleRef: TestingModule = await Test.createTestingModule({
       imports: [ConfigModule.forRoot(), HttpModule],
       providers: [HuggingFaceSearchService],
@@ -21,7 +26,7 @@ describe('HuggingFaceSearchService', () => {
   });
 
   it('listDatasets', async () => {
-    let datasets = await service.listDatasets();
+    let datasets = await service.listDatasetsByTask(TaskType.Token_Classification)
     console.log(datasets);
     expect(datasets).toBeDefined();
   });

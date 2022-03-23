@@ -7,7 +7,7 @@ import { plainToClass } from 'class-transformer';
 describe('TagFlipDatasetProvider', () => {
   let provider: TagFlipDatasetProvider;
 
-  const tagflipApi = 'http://localhost:5000';
+  const tagflipApi = 'https://jupiter.fh-swf.de/tagflip/api/v1';
 
   beforeEach(async () => {
     const moduleRef = await Test.createTestingModule({
@@ -46,7 +46,7 @@ describe('TagFlipDatasetProvider', () => {
     it('should return api url not ending with slash.', async () => {
       const datasets = await provider.listDatasets();
       datasets.forEach(async (element) => {
-        expect(await provider.hasDataset(element)).toBe(true);
+        expect(await provider.hasDataset(element.name)).toBe(true);
       });
     });
   });
@@ -54,7 +54,7 @@ describe('TagFlipDatasetProvider', () => {
   describe('getDataset()', () => {
     it('should return api url not ending with slash.', async () => {
       const datasets = await provider.listDatasets();
-      const result = await provider.getDataset(datasets[1]);
+      const result = await provider.getDataset(datasets[1].name);
       console.log(result);
       expect(result).toBeTruthy();
     });
@@ -62,7 +62,7 @@ describe('TagFlipDatasetProvider', () => {
 
   describe('gatherRelevantAnnotations()', () => {
     it('should return annotations used in a document of a corpus.', async () => {
-      const annotations = await provider.gatherRelevantAnnotations(6, [6, 7]);
+      const annotations = await provider.gatherRelevantAnnotations(1, [6, 7]);
       console.log(annotations.map((a) => a.nameAsIOB()));
       expect(annotations).toBeTruthy();
     });
