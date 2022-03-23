@@ -93,27 +93,28 @@ const ProjectContainer: FC<Props> = (props) => {
           <Route
             path={`training`}
             element={
-              <ProtectedRoute disabled={!projectData?.project.dataset} />
+              <ProtectedRoute disabled={!projectData?.project.dataset}>
+                <TrainingOverview />
+              </ProtectedRoute>
             }
-          >
-            <Route path="" element={<TrainingOverview />} />
-          </Route>
+          />
           <Route
             path={`training/new`}
             element={
-              <ProtectedRoute disabled={!projectData?.project.dataset} />
+              <ProtectedRoute disabled={!projectData?.project.dataset}>
+                <NewTraining />
+              </ProtectedRoute>
             }
-          >
-            <Route path="" element={<NewTraining />} />
-          </Route>
+          />
           <Route
             path={`deployment`}
             element={
-              <ProtectedRoute disabled={!projectData?.project.dataset} />
+              <ProtectedRoute disabled={!projectData?.project.dataset}>
+                <DeploymentOverview />
+              </ProtectedRoute>
             }
-          >
-            <Route path="" element={<DeploymentOverview />} />
-          </Route>
+          />
+
           <Route path={`settings`} element={<Settings />} />
         </Routes>
       </Content>

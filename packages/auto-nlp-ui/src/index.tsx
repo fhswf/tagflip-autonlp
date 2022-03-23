@@ -9,8 +9,11 @@ import App from './app/modules/';
 
 import './less/index.less';
 
+//console.log('path=%s', process.env.ASSET_PATH);
+const base_path = '/'; //process.env.ASSET_PATH ? process.env.ASSET_PATH : '/';
+
 ReactDOM.render(
-  <Router>
+  <Router basename={base_path}>
     <ApolloProvider client={client}>
       <App />
     </ApolloProvider>

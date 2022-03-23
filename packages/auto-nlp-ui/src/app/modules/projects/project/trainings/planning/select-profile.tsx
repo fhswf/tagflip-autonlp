@@ -31,7 +31,7 @@ type Props = OwnProps;
 const SelectProfile: FunctionComponent<Props> = (props) => {
   const [form] = Form.useForm();
   const modelId = formData().model;
-  const match = useMatch('/project/:id');
+  const match = useMatch('/project/:id/*');
   const classes = useStyles();
 
   const {
