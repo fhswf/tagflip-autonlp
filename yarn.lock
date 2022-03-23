@@ -5450,7 +5450,6 @@ __metadata:
     "@semantic-release/commit-analyzer": ^9.0.2
     "@semantic-release/git": ^10.0.1
     "@semantic-release/github": ^8.0.2
-    "@semantic-release/npm": ^9.0.1
     "@semantic-release/release-notes-generator": ^10.0.3
     "@types/chroma-js": ^2
     "@types/copy-webpack-plugin": ^8
@@ -5498,7 +5497,6 @@ __metadata:
     rxjs: ^7.5.4
     semantic-release: ^19.0.2
     semantic-release-monorepo: ^7.0.5
-    semantic-release-plugin-decorators: ^3.0.1
     style-loader: ^2.0.0
     subscriptions-transport-ws: ^0.9.18
     ts-loader: ^8.0.17
@@ -16966,7 +16964,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semantic-release-plugin-decorators@npm:^3.0.0, semantic-release-plugin-decorators@npm:^3.0.1":
+"semantic-release-plugin-decorators@npm:^3.0.0":
   version: 3.0.1
   resolution: "semantic-release-plugin-decorators@npm:3.0.1"
   peerDependencies:
