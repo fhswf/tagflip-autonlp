@@ -4,6 +4,14 @@
   "description": "Service for searching HuggingFace API.",
   "author": "Timo Neuhaus",
   "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fhswf/tagflip-autonlp.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "install": "run-script-os",
     "install:linux": "python -m venv ./venv && /bin/bash -c 'export PIPENV_IGNORE_VIRTUALENVS=1 && source ./venv/bin/activate && pipenv install'",
@@ -16,7 +24,7 @@
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^7.2.0",
+    "@semantic-release/github": "^8.0.2",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "run-script-os": "^1.1.6",
     "semantic-release": "^19.0.2",
