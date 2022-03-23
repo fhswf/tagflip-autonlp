@@ -44,7 +44,7 @@ const App = () => {
       <Content className={classes.content}>
         <Breadcrumb className={classes.breadcrumb}>
           {breadcrumbs.map(({ match, breadcrumb }) => (
-            <Breadcrumb.Item key={match.params.id} href={match.pathname}>
+            <Breadcrumb.Item key={match.pathname} href={match.pathname}>
               {breadcrumb}
             </Breadcrumb.Item>
           ))}
@@ -52,10 +52,11 @@ const App = () => {
         <Routes>
           <Route path="/project" element={<ProjectOverview />} />
           <Route path="/project/:id/*" element={<ProjectLayout />} />
+          <Route path="" element={<Navigate to="/project" />} />
         </Routes>
       </Content>
       <Footer style={{ textAlign: 'center' }}>
-        ©2021 South Westphalia University of Applied Sciences
+        ©2022 South Westphalia University of Applied Sciences
       </Footer>
     </Layout>
   );

@@ -84,6 +84,7 @@ const ProjectContainer: FC<Props> = (props) => {
           </Menu.Item>
         </Menu>
       </Sider>
+
       <Content className="site-layout-content">
         <Routes>
           <Route
@@ -114,8 +115,17 @@ const ProjectContainer: FC<Props> = (props) => {
               </ProtectedRoute>
             }
           />
-
           <Route path={`settings`} element={<Settings />} />
+          <Route
+            path=""
+            element={
+              projectData?.project.dataset ? (
+                <Navigate to="training" />
+              ) : (
+                <Navigate to="data" />
+              )
+            }
+          />
         </Routes>
       </Content>
     </Layout>

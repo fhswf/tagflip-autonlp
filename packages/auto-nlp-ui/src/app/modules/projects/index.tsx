@@ -57,7 +57,7 @@ const ProjectOverview = () => {
         }}
         dataSource={queryData?.projects || []}
         renderItem={(item) => (
-          <List.Item className={classes.cardItem}>
+          <List.Item key={item.id} className={classes.cardItem}>
             <ProjectCard
               title={item.name}
               key={item.id}

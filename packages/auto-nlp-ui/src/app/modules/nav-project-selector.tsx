@@ -17,6 +17,7 @@ import { useNavigate, useMatch } from 'react-router-dom';
 import { GetProjectBase } from '../apollo/__generated__/GetProjectBase';
 import { GetProjects } from '../apollo/__generated__/GetProjects';
 import { GET_PROJECT_BASE, GET_PROJECTS } from '../apollo/projects';
+import { TaskType, TaskTypeShort } from 'auto-nlp-shared-js';
 
 export const NavProjectSelector = () => {
   const navigate = useNavigate();
@@ -33,14 +34,7 @@ export const NavProjectSelector = () => {
     return <Spin spinning={true} />;
 
   const taskTypeTag = (project, color: string = undefined) => {
-    return (
-      <Tag color={color}>
-        {project.taskTypeName
-          .split(/\s+/)
-          .map((x) => x[0])
-          .join('')}
-      </Tag>
-    );
+    return <Tag color={color}>{TaskTypeShort.get(project.taskType)}</Tag>;
   };
 
   const menu = (
