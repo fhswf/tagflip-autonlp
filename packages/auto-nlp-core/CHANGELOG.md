@@ -1,3 +1,10 @@
+# [auto-nlp-core-v1.0.3](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-core-v1.0.2...auto-nlp-core-v1.0.3) (2022-03-23)
+
+
+### Bug Fixes
+
+* configuration for ci build ([9b83d99](https://github.com/fhswf/tagflip-autonlp/commit/9b83d993b356da823f9c55fcba97fd9b71537523))
+
 # [auto-nlp-core-v1.0.2](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-core-v1.0.1...auto-nlp-core-v1.0.2) (2022-03-23)
 
 
