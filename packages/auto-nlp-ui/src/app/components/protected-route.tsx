@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react';
-import { Redirect, Route, RouteProps } from 'react-router-dom';
+import { Navigate, Outlet, Route, RouteProps } from 'react-router-dom';
 
 type OwnProps = RouteProps & {
+  children: React.ReactNode;
   disabled: boolean;
 };
 
-const ProtectedRoute: FunctionComponent<OwnProps> = ({ disabled, ...rest }) => {
-  if (disabled) return <Redirect to="/" />;
-  return <Route {...rest} />;
+const ProtectedRoute = ({ children, disabled }: OwnProps) => {
+  return disabled ? <Navigate to="/project" /> : children;
 };
 
 export default ProtectedRoute;

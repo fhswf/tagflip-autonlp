@@ -3,7 +3,7 @@ import { List, Modal, Spin } from 'antd';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useNavigate, useMatch } from 'react-router-dom';
 import { GetProjects } from '../../apollo/__generated__/GetProjects';
 import { GET_PROJECTS } from '../../apollo/projects';
 import ProjectCard from './project-card';
@@ -19,7 +19,7 @@ const useStyles = createUseStyles({
 });
 
 const ProjectOverview = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const classes = useStyles();
 
   const {
@@ -34,7 +34,9 @@ const ProjectOverview = () => {
     Modal.error({
       title: queryError.name,
       content: queryError.message,
-      onOk() {},
+      onOk() {
+        console.log('ok');
+      },
     });
     return null;
   }
@@ -58,8 +60,9 @@ const ProjectOverview = () => {
           <List.Item className={classes.cardItem}>
             <ProjectCard
               title={item.name}
+              key={item.id}
               taskType={item.taskTypeName}
-              onClick={() => history.push(`/project/${item.id}`)}
+              onClick={() => navigate(`/project/${item.id}`)}
               description={item.description}
             />
           </List.Item>

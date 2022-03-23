@@ -2,7 +2,7 @@ import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { useMutation, useQuery } from '@apollo/client';
 import { Alert, Button, Modal, PageHeader, Spin } from 'antd';
 import React from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useNavigate, useMatch } from 'react-router-dom';
 import { CreateProject } from '../../../../apollo/__generated__/CreateProject';
 import { GetDeploymentCount } from '../../../../apollo/__generated__/GetDeploymentCount';
 import { GET_DEPLOYMENT_COUNT } from '../../../../apollo/deployments';
@@ -13,8 +13,8 @@ import {
 } from '../../../../apollo/projects';
 
 export const DeleteProject = () => {
-  const match = useRouteMatch<{ id: string }>('/project/:id');
-  const history = useHistory();
+  const match = useMatch('/project/:id/*');
+  const navigate = useNavigate();
 
   const {
     data: projectData,
@@ -32,12 +32,10 @@ export const DeleteProject = () => {
     variables: { projectId: match.params.id },
   });
 
-  const [
-    deleteProject,
-    { loading: deleteLoading, error: deleteError },
-  ] = useMutation<CreateProject>(DELETE_PROJECT, {
-    refetchQueries: [{ query: GET_PROJECTS }],
-  });
+  const [deleteProject, { loading: deleteLoading, error: deleteError }] =
+    useMutation<CreateProject>(DELETE_PROJECT, {
+      refetchQueries: [{ query: GET_PROJECTS }],
+    });
 
   const onDelete = () => {
     Modal.confirm({
@@ -49,7 +47,7 @@ export const DeleteProject = () => {
           variables: {
             id: projectData?.project.id,
           },
-        }).then(() => history.replace('/project'));
+        }).then(() => navigate('/project', { replace: true }));
       },
       onCancel() {},
     });

@@ -17,7 +17,7 @@ import { Model } from 'auto-nlp-shared-js';
 
 import React, { FunctionComponent } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useRouteMatch } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 import { GetModelsForTaskType } from '../../../../../apollo/__generated__/GetModelsForTaskType';
 import { GetProjectBase } from '../../../../../apollo/__generated__/GetProjectBase';
 import { GET_MODELS_FOR_TASK_TYPE } from '../../../../../apollo/models';
@@ -46,7 +46,7 @@ type Props = OwnProps;
 const SelectModel: FunctionComponent<Props> = (props) => {
   const [form] = Form.useForm();
   const classes = useStyles();
-  const match = useRouteMatch<{ id: string }>('/project/:id');
+  const match = useMatch('/project/:id/*');
 
   const {
     data: projectData,
@@ -95,7 +95,7 @@ const SelectModel: FunctionComponent<Props> = (props) => {
     });
   };
 
-  const models = (modelData?.modelsByTask as unknown) as Model[];
+  const models = modelData?.modelsByTask as unknown as Model[];
 
   return (
     <Form

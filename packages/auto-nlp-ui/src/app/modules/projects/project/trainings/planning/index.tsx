@@ -16,7 +16,7 @@ import { Model, Profile } from 'auto-nlp-shared-js';
 import moment from 'moment';
 import React, { FunctionComponent, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useNavigate, useMatch } from 'react-router-dom';
 import { CREATE_TRAINING } from '../../../../../apollo/trainings';
 import ParameterConfiguration from './parameter-configuration';
 import ScheduleTraining from './schedule-training';
@@ -83,14 +83,13 @@ export const formData = makeVar(FORM_INITIAL_STATE);
 
 const NewTraining: FunctionComponent<Props> = (props) => {
   const classes = useStyles();
-  const history = useHistory();
-  let match = useRouteMatch<{ id: string }>('/project/:id/');
+  const navigate = useNavigate();
+
+  let match = useMatch('/project/:id/*');
   const [current, setCurrent] = React.useState(0);
 
-  const [
-    createTraining,
-    { loading: createTrainingLoading },
-  ] = useMutation<CreateTrainingInput>(CREATE_TRAINING, {});
+  const [createTraining, { loading: createTrainingLoading }] =
+    useMutation<CreateTrainingInput>(CREATE_TRAINING, {});
 
   const next = () => setCurrent(current + 1);
   const prev = () => setCurrent(current - 1);
@@ -213,7 +212,7 @@ const NewTraining: FunctionComponent<Props> = (props) => {
       <PageHeader
         title="Training Planner"
         subTitle="Schedule a new training"
-        onBack={() => history.goBack()}
+        onBack={() => navigate(-1)}
       />
       <Steps size="small" current={current} responsive={true}>
         {planningSteps.map((item) => (

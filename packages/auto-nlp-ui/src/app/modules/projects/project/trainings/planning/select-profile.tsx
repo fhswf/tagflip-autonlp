@@ -4,7 +4,7 @@ import { Profile } from 'auto-nlp-shared-js';
 
 import React, { FunctionComponent } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useRouteMatch } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 import { GetModel } from '../../../../../apollo/__generated__/GetModel';
 import { GetProjectBase } from '../../../../../apollo/__generated__/GetProjectBase';
 import { GET_MODEL } from '../../../../../apollo/models';
@@ -31,7 +31,7 @@ type Props = OwnProps;
 const SelectProfile: FunctionComponent<Props> = (props) => {
   const [form] = Form.useForm();
   const modelId = formData().model;
-  const match = useRouteMatch<{ id: string }>('/project/:id');
+  const match = useMatch('/project/:id/*');
   const classes = useStyles();
 
   const {
@@ -110,10 +110,10 @@ const SelectProfile: FunctionComponent<Props> = (props) => {
               <ProfileCard
                 onClick={() => {
                   form.setFieldsValue({ profile: item.name });
-                  selectedProfile((item as unknown) as Profile);
+                  selectedProfile(item as unknown as Profile);
                   form.submit();
                 }}
-                profile={(item as unknown) as Profile}
+                profile={item as unknown as Profile}
               />
             </List.Item>
           )}
