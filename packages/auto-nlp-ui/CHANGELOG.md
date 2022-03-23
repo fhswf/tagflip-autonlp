@@ -1,3 +1,12 @@
+# [auto-nlp-ui-v1.0.2](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-ui-v1.0.1...auto-nlp-ui-v1.0.2) (2022-03-23)
+
+
+### Bug Fixes
+
+* migration to react-roter 6 ([60becfa](https://github.com/fhswf/tagflip-autonlp/commit/60becfac03296797cdf4289f4ec08586f5076971))
+* migration to react-roter 6 ([c3d055a](https://github.com/fhswf/tagflip-autonlp/commit/c3d055a59a90eaf7c2aa2033c67fc58758e218fb))
+* **ui:** update routing to react-router-6 ([2a1fe6b](https://github.com/fhswf/tagflip-autonlp/commit/2a1fe6b9aa1ec48d89189cc8ac8b3f04d2b28ce2))
+
 # [auto-nlp-ui-v1.0.1](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-ui-v1.0.0...auto-nlp-ui-v1.0.1) (2022-03-14)
 
 
