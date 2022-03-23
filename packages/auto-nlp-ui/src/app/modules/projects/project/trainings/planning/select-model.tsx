@@ -46,7 +46,7 @@ type Props = OwnProps;
 const SelectModel: FunctionComponent<Props> = (props) => {
   const [form] = Form.useForm();
   const classes = useStyles();
-  const match = useMatch('/project/:id');
+  const match = useMatch('/project/:id/*');
 
   const {
     data: projectData,

@@ -85,7 +85,7 @@ const NewTraining: FunctionComponent<Props> = (props) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
-  let match = useMatch('/project/:id/');
+  let match = useMatch('/project/:id/*');
   const [current, setCurrent] = React.useState(0);
 
   const [createTraining, { loading: createTrainingLoading }] =

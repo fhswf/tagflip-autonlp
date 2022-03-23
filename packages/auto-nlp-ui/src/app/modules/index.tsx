@@ -44,7 +44,7 @@ const App = () => {
       <Content className={classes.content}>
         <Breadcrumb className={classes.breadcrumb}>
           {breadcrumbs.map(({ match, breadcrumb }) => (
-            <Breadcrumb.Item key={match.params.id}>
+            <Breadcrumb.Item key={match.params.id} href={match.pathname}>
               {breadcrumb}
             </Breadcrumb.Item>
           ))}

@@ -16,7 +16,7 @@ interface OwnProps {
 type Props = OwnProps;
 
 const DeploymentTest: FunctionComponent<Props> = (props) => {
-  let match = useMatch('/project/:id/');
+  let match = useMatch('/project/:id/*');
   const { data: projectData, loading: projectLoading } =
     useQuery<GetProjectBase>(GET_PROJECT_BASE, {
       variables: { projectId: match.params.id },
