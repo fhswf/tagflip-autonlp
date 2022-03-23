@@ -28,3 +28,6 @@
 **/docker.env
 **/config.docker.yaml
 **/config.docker.json
+
+# Test results
+**/junit.xml

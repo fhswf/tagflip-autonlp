@@ -4,6 +4,23 @@
   "description": "A python library to implement custom workflows for TagFlip AutoNLP.",
   "author": "Timo Neuhaus",
   "license": "MIT",
+  "contributors": [
+    {
+      "name": "Timo Neuhaus",
+      "email": "timo@n.euhaus.net"
+    },
+    {
+      "name": "Christian Gawron",
+      "email": "gawron.christian@fh-swf.de"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fhswf/tagflip-autonlp.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "install": "run-script-os",
     "install:linux": "python -m venv ./venv && /bin/bash -c 'source ./venv/bin/activate && pipenv install'",
