@@ -44,7 +44,7 @@ jobs:
 
       # RunEntity tests
       - name: Test
-        run: yarn workspaces foreach -v run test --runInBand # TODO: There might be an "intelligent" solution to run tests for changed+change-affected workspaces
+        run: yarn workspaces foreach -v run --inspect-brk test --runInBand # TODO: There might be an "intelligent" solution to run tests for changed+change-affected workspaces
 
       - name: Test Report
         uses: dorny/test-reporter@v1
