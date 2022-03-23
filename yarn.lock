@@ -1865,16 +1865,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fhswf/tagflip-common@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@fhswf/tagflip-common@npm:2.0.0"
-  checksum: 02734878e578b23a39888467cbcd8ab9052ced735744bb2de5bfd2edc6559351ae2cabbc6993406adec87d78978bb8fc701a89c9c414468d27d8ee3b6da45c36
-  languageName: node
-  linkType: hard
-
-"@fhswf/tagflip@workspace:.":
+"@fhswf/tagflip-autonlp@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@fhswf/tagflip@workspace:."
+  resolution: "@fhswf/tagflip-autonlp@workspace:."
   dependencies:
     "@semantic-release/changelog": ^6.0.1
     "@semantic-release/commit-analyzer": ^9.0.2
@@ -1884,6 +1877,13 @@ __metadata:
     semantic-release-monorepo: ^7.0.5
   languageName: unknown
   linkType: soft
+
+"@fhswf/tagflip-common@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@fhswf/tagflip-common@npm:2.0.0"
+  checksum: 02734878e578b23a39888467cbcd8ab9052ced735744bb2de5bfd2edc6559351ae2cabbc6993406adec87d78978bb8fc701a89c9c414468d27d8ee3b6da45c36
+  languageName: node
+  linkType: hard
 
 "@gar/promisify@npm:^1.0.1":
   version: 1.1.2

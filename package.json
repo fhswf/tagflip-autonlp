@@ -1,5 +1,5 @@
 {
-  "name": "@fhswf/tagflip",
+  "name": "@fhswf/tagflip-autonlp",
   "version": "1.0.0",
   "description": "A web based tool for NLP projects.",
   "workspaces": [
@@ -28,6 +28,9 @@
     {
       "name": "Christian Gawron",
       "email": "gawron.christian@fh-swf.de"
+    },
+    {
+      "name": "Kevin Fitkau"
     }
   ],
   "release": {

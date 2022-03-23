@@ -5,6 +5,16 @@
   "author": "Timo Neuhaus",
   "private": true,
   "license": "MIT",
+  "contributors": [
+    {
+      "name": "Timo Neuhaus",
+      "email": "timo@n.euhaus.net"
+    },
+    {
+      "name": "Christian Gawron",
+      "email": "gawron.christian@fh-swf.de"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/fhswf/tagflip-autonlp.git"
