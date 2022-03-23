@@ -9,7 +9,7 @@ import { useQuery } from '@apollo/client';
 import { Layout, Menu } from 'antd';
 import React, { FC } from 'react';
 import { createUseStyles } from 'react-jss';
-import { Link, Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Link, Navigate, Route, Routes, useMatch } from 'react-router-dom';
 import { GetProjectBase } from '../../../apollo/__generated__/GetProjectBase';
 import { GET_PROJECT_BASE } from '../../../apollo/projects';
 import ProtectedRoute from '../../../components/protected-route';
@@ -31,8 +31,8 @@ const useStyles = createUseStyles({
 const ProjectContainer: FC<Props> = (props) => {
   const { Content, Sider } = Layout;
   const classes = useStyles();
-  let match = useRouteMatch<{ id: string }>('/project/:id/');
-  let pageMatch = useRouteMatch<{ page: string }>('/project/:id/:page');
+  const match = useMatch('/project/:id/*');
+  const pageMatch = useMatch('/project/:id/:page');
 
   const { data: projectData } = useQuery<GetProjectBase>(GET_PROJECT_BASE, {
     variables: { projectId: match.params.id },
@@ -53,7 +53,7 @@ const ProjectContainer: FC<Props> = (props) => {
           style={{ height: '100%' }}
         >
           <Menu.Item key="data" icon={<FileTextOutlined />}>
-            <Link to={`${match.url}/data`}>Data</Link>
+            <Link to={`/project/${match.params.id}/data`}>Data</Link>
           </Menu.Item>
           <Menu.Item
             key="annotation"
@@ -67,53 +67,55 @@ const ProjectContainer: FC<Props> = (props) => {
             icon={<LineChartOutlined />}
             disabled={!projectData?.project.dataset}
           >
-            <Link to={`${match.url}/training`}>Training</Link>
+            <Link to={`/project/${match.params.id}/training`}>Training</Link>
           </Menu.Item>
           <Menu.Item
             key="deployment"
             icon={<CloudSyncOutlined />}
             disabled={!projectData?.project.dataset}
           >
-            <Link to={`${match.url}/deployment`}>Deployment</Link>
+            <Link to={`/project/${match.params.id}/deployment`}>
+              Deployment
+            </Link>
           </Menu.Item>
           <Menu.Divider />
           <Menu.Item key="settings" icon={<SettingOutlined />}>
-            <Link to={`${match.url}/settings`}>Settings</Link>
+            <Link to={`/project/${match.params.id}/settings`}>Settings</Link>
           </Menu.Item>
         </Menu>
       </Sider>
       <Content className="site-layout-content">
-        <Switch>
-          <Redirect
-            path={`${match.url}/`}
-            to={`${match.url}/data`}
-            exact={true}
-          />
-          <Route path={`${match.url}/data`} component={DataSelection} />
-          <ProtectedRoute
-            disabled={!projectData?.project.dataset}
-            path={`${match.url}/training`}
-            exact={true}
-            component={TrainingOverview}
-          />
-          <ProtectedRoute
-            disabled={!projectData?.project.dataset}
-            path={`${match.url}/training/new`}
-            exact={true}
-            component={NewTraining}
-          />
-          <ProtectedRoute
-            disabled={!projectData?.project.dataset}
-            path={`${match.url}/deployment`}
-            exact={true}
-            component={DeploymentOverview}
+        <Routes>
+          <Route
+            path={`data`}
+            element={<DataSelection project={match.params.id} />}
           />
           <Route
-            path={`${match.url}/settings`}
-            exact={true}
-            component={Settings}
-          />
-        </Switch>
+            path={`training`}
+            element={
+              <ProtectedRoute disabled={!projectData?.project.dataset} />
+            }
+          >
+            <Route path="" element={<TrainingOverview />} />
+          </Route>
+          <Route
+            path={`training/new`}
+            element={
+              <ProtectedRoute disabled={!projectData?.project.dataset} />
+            }
+          >
+            <Route path="" element={<NewTraining />} />
+          </Route>
+          <Route
+            path={`deployment`}
+            element={
+              <ProtectedRoute disabled={!projectData?.project.dataset} />
+            }
+          >
+            <Route path="" element={<DeploymentOverview />} />
+          </Route>
+          <Route path={`settings`} element={<Settings />} />
+        </Routes>
       </Content>
     </Layout>
   );

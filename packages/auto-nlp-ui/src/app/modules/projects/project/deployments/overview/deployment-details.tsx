@@ -12,14 +12,12 @@ interface OwnProps {
 type Props = OwnProps;
 
 const DeploymentDetails: FunctionComponent<Props> = (props) => {
-  const {
-    data: deploymentData,
-    loading: deploymentLoading,
-  } = useQuery<GetDeployment>(GET_DEPLOYMENT, {
-    variables: {
-      id: props.id,
-    },
-  });
+  const { data: deploymentData, loading: deploymentLoading } =
+    useQuery<GetDeployment>(GET_DEPLOYMENT, {
+      variables: {
+        id: props.id,
+      },
+    });
 
   if (deploymentLoading) return <Spin spinning={true} />;
 
