@@ -1,3 +1,11 @@
+# [auto-nlp-ui-v1.0.3](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-ui-v1.0.2...auto-nlp-ui-v1.0.3) (2022-03-23)
+
+
+### Bug Fixes
+
+* **ui:** fix project navigation menu ([b40034f](https://github.com/fhswf/tagflip-autonlp/commit/b40034f2a03e27676d4682d8bda83001a9b3099d))
+* **ui:** show correct task type labels in menu ([3c15e57](https://github.com/fhswf/tagflip-autonlp/commit/3c15e57ef9a37c98f820ef7ea0945b93650218e0))
+
 # [auto-nlp-ui-v1.0.2](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-ui-v1.0.1...auto-nlp-ui-v1.0.2) (2022-03-23)
 
 
