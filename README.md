@@ -8,6 +8,10 @@ TagFlip AutoNLP enables automated training and deployment of language models for
 This project uses [netJS](https://nestjs.com/) for the main backend and [mlFlow](https://mlflow.org/) for the machine learning workflows.
 The frontend is built using React and [Ant Design](https://ant.design/).
 
+## Try it!
+
+TagFlip AutoNLP is available at [autonlp.informatik.fh-swf.de](https://autonlp.informatik.fh-swf.de).
+
 ## Building & Deploying
 
 ### Docker
