@@ -95,6 +95,7 @@ class HuggingFaceSequenceClassificationSavable(MLflowSavable):
 
             def predict(self, context, input_df):
                 sentences = input_df.values.tolist()
+                logger.info(f"predict: input={sentences}")
                 sentences = list(map(lambda sentence: sentence[0], sentences))
                 pipe = pipeline(
                     "text-classification", model=self.trained_model, tokenizer=self.tokenizer)
