@@ -2,7 +2,7 @@ version: "3.6"
 services:
 
   auto-nlp-core:
-    container_name: auto-nlp-core
+    container_name: auto-nlp-core-${ENVIRONMENT}
     image: ghcr.io/fhswf/auto-nlp-core
     build:
       context: .
@@ -29,7 +29,7 @@ services:
     restart: always
 
   auto-nlp-huggingface-search:
-    container_name: auto-nlp-huggingface-search
+    container_name: auto-nlp-huggingface-search-${ENVIRONMENT}
     image: ghcr.io/fhswf/auto-nlp-huggingface-search
     build:
       context: packages/auto-nlp-huggingface-search
@@ -44,7 +44,7 @@ services:
     restart: always
 
   auto-nlp-deployment:
-    container_name: auto-nlp-deployment
+    container_name: auto-nlp-deployment-${ENVIRONMENT}
     image: ghcr.io/fhswf/auto-nlp-deployment
     build:
       context: packages/auto-nlp-deployment
@@ -76,7 +76,7 @@ services:
     restart: always
 
   auto-nlp-deployment-executor:
-    container_name: auto-nlp-deployment-executor
+    container_name: auto-nlp-deployment-executor-${ENVIRONMENT}
     image: ghcr.io/fhswf/auto-nlp-deployment
     entrypoint: pipenv run dramatiq --path="./src" main_dramatiq
     extra_hosts:
@@ -98,7 +98,7 @@ services:
 
   auto-nlp-traefik:
     image: "traefik:v2.4"
-    container_name: "auto-nlp-traefik"
+    container_name: auto-nlp-traefik-${ENVIRONMENT}
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"
@@ -118,7 +118,7 @@ services:
 
   auto-nlp-redis:
     image: "redis:latest"
-    container_name: "auto-nlp-redis"
+    container_name: auto-nlp-redis-${ENVIRONMENT}
     expose:
       - "6379"
     networks:
@@ -127,7 +127,7 @@ services:
 
   auto-nlp-mongodb:
     image: "mongo:latest"
-    container_name: "auto-nlp-mongodb"
+    container_name: auto-nlp-mongodb-${ENVIRONMENT}
     volumes:
       - "/home/autonlp/mongodb/data:/data/db"
     environment:
@@ -141,7 +141,7 @@ services:
 
   auto-nlp-mlflow-tracking:
     image: "ghcr.io/fhswf/mlflow-tracking-server:latest"
-    container_name: "auto-nlp-mlflow-tracking"
+    container_name: auto-nlp-mlflow-tracking-${ENVIRONMENT}
     volumes:
       - "/home/autonlp/mlflow:/data"
     ports:
@@ -158,7 +158,7 @@ services:
 
   auto-nlp-minio:
     image: minio/minio
-    container_name: "auto-nlp-minio"
+    container_name: auto-nlp-minio-${ENVIRONMENT}
     command: server /data --console-address ":9001"
     volumes:
       - "/home/autonlp/minio:/data"
@@ -198,11 +198,13 @@ services:
       '
     networks:
       - auto-nlp-services
+    profiles:
+      - setup
 
 networks:
   auto-nlp-deployments:
-    name: "auto-nlp-deployments"
+    name: auto-nlp-deployments-${ENVIRONMENT}
     driver: 'bridge'
   auto-nlp-services:
-    name: "auto-nlp-services"
+    name: auto-nlp-services-${ENVIRONMENT}
 
