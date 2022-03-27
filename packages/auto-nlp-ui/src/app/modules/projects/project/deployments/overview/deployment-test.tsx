@@ -8,6 +8,7 @@ import { GetProjectBase } from '../../../../../apollo/__generated__/GetProjectBa
 import { GET_DEPLOYMENT } from '../../../../../apollo/deployments';
 import { GET_PROJECT_BASE } from '../../../../../apollo/projects';
 import TcDeploymentTest from './tc-deployment-test';
+import ScDeploymentTest from './sc-deployment-test';
 
 interface OwnProps {
   deploymentId: string;
@@ -29,6 +30,8 @@ const DeploymentTest: FunctionComponent<Props> = (props) => {
     switch (taskType) {
       case TaskType.Token_Classification:
         return <TcDeploymentTest deploymentId={props.deploymentId} />;
+      case TaskType.Text_Classification:
+        return <ScDeploymentTest deploymentId={props.deploymentId} />;
     }
   };
 

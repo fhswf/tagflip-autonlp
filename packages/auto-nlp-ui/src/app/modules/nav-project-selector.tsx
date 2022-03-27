@@ -34,7 +34,11 @@ export const NavProjectSelector = () => {
     return <Spin spinning={true} />;
 
   const taskTypeTag = (project, color: string = undefined) => {
-    return <Tag color={color}>{TaskTypeShort.get(project.taskType)}</Tag>;
+    return (
+      <Tag className={TaskTypeShort.get(project.taskType)} color={color}>
+        {TaskTypeShort.get(project.taskType)}
+      </Tag>
+    );
   };
 
   const menu = (
