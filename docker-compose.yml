@@ -198,8 +198,6 @@ services:
       '
     networks:
       - auto-nlp-services
-    profiles:
-      - setup
 
 networks:
   auto-nlp-deployments:
