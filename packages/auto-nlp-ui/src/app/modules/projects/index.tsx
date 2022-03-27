@@ -61,7 +61,7 @@ const ProjectOverview = () => {
             <ProjectCard
               title={item.name}
               key={item.id}
-              taskType={item.taskTypeName}
+              taskType={item.taskType}
               onClick={() => navigate(`/project/${item.id}`)}
               description={item.description}
             />
