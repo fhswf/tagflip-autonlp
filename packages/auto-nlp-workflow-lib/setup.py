@@ -95,7 +95,7 @@ setup(
         "chardet==4.0.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
         "click==8.0.1; python_version >= '3.6'",
         "cliff==3.8.0; python_version >= '3.6'",
-        "cloudpickle==1.6.0; python_version >= '3.5'",
+        "cloudpickle==2.0.0; python_version >= '3.5'",
         "cmaes==0.8.2; python_version >= '3.6'",
         "cmd2==2.1.2; python_version >= '3.6'",
         "colorama==0.4.4; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
