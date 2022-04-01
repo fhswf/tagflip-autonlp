@@ -186,7 +186,7 @@ const NewTraining: FunctionComponent<Props> = (props) => {
           notification['success']({
             message: 'Training scheduled',
           });
-          history.goBack();
+          navigate(-1);
         })
         .catch((err) => {
           Modal.error({
