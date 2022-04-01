@@ -1,3 +1,11 @@
+# [auto-nlp-ui-v1.0.4](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-ui-v1.0.3...auto-nlp-ui-v1.0.4) (2022-04-01)
+
+
+### Bug Fixes
+
+* **ui:** fixes for react 18 ([#27](https://github.com/fhswf/tagflip-autonlp/issues/27)) ([a4c318a](https://github.com/fhswf/tagflip-autonlp/commit/a4c318aa2a925d862bb3b5ff57af13f749adb98e))
+* **ui:** use navigate instead of history ([3bab98d](https://github.com/fhswf/tagflip-autonlp/commit/3bab98d43b62a9c789acd4fc61bc91da5c8bc972))
+
 # [auto-nlp-ui-v1.0.3](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-ui-v1.0.2...auto-nlp-ui-v1.0.3) (2022-03-23)
 
 
