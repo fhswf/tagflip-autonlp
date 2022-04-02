@@ -1,7 +1,7 @@
 FROM pytorch/pytorch:1.8.1-cuda11.1-cudnn8-runtime
 
 
-LABEL org.opencontainers.image.source https://github.com/fhswf/autonlp
+LABEL org.opencontainers.image.source https://github.com/fhswf/tagflip-autonlp
 
 #ARG github_token
 
