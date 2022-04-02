@@ -46,7 +46,7 @@ jobs:
 
       # RunEntity tests
       - name: Test
-        run: yarn workspaces foreach -v run --inspect-brk test --runInBand # TODO: There might be an "intelligent" solution to run tests for changed+change-affected workspaces
+        run: yarn workspaces foreach -v run --inspect-brk test --runInBand 
 
       - name: Test Report
         uses: dorny/test-reporter@v1
@@ -55,6 +55,12 @@ jobs:
           name: JEST Tests            # Name of the check run which will be created
           path: '**/junit.xml'        # Path to test results
           reporter: jest-junit        # Format of test results
+      
+      - name: Generating coverage badges
+        uses: jpb06/jest-badges-action@latest
+        with:
+          branches: main
+          coverage-summary-path: packages/coverage/coverage-summary.json
 
   release:
     # Only release on push to master

@@ -1,7 +1,8 @@
 module.exports = {
   resolver: require.resolve(`jest-pnp-resolver`),
   moduleFileExtensions: ['js', 'json', 'ts'],
-  rootDir: 'src',
+  modulePaths: ['src'],
+  rootDir: '.',
   reporters: ['default', 'jest-junit'],
   testRegex: '.*\\.spec\\.ts$',
 
@@ -9,6 +10,7 @@ module.exports = {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
   collectCoverageFrom: ['**/*.(t|j)s'],
+  coverageReporters: ['json-summary', 'text', 'lcov'],
   coverageDirectory: '../coverage',
   testEnvironment: 'node',
 };
