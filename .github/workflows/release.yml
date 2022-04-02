@@ -58,6 +58,7 @@ jobs:
       
       - name: Generating coverage badges
         uses: jpb06/jest-badges-action@latest
+        if: success() || failure()    # run this step even if previous step failed
         with:
           branches: main
           coverage-summary-path: packages/coverage/coverage-summary.json
