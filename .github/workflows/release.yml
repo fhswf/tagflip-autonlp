@@ -46,7 +46,7 @@ jobs:
 
       # RunEntity tests
       - name: Test
-        run: yarn workspaces foreach -v run --inspect-brk test --runInBand 
+        run: yarn workspaces foreach -v run --inspect-brk test --runInBand --coverage
 
       - name: Test Report
         uses: dorny/test-reporter@v1

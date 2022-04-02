@@ -2,7 +2,7 @@ import { ApolloProvider } from '@apollo/client';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import * as ReactDOMClient from 'react-dom/client';
+//import * as ReactDOMClient from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { client } from './app/apollo';
 
@@ -14,12 +14,13 @@ import './less/index.less';
 const base_path = '/'; //process.env.ASSET_PATH ? process.env.ASSET_PATH : '/';
 
 const container = document.getElementById('app');
-const root = ReactDOMClient.createRoot(container);
+//const root = ReactDOMClient.createRoot(container);
 
-root.render(
+ReactDOM.render(
   <Router basename={base_path}>
     <ApolloProvider client={client}>
       <App />
     </ApolloProvider>
   </Router>,
+  container,
 );
