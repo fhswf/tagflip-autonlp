@@ -15,6 +15,7 @@
     "baseUrl": "./",
     "incremental": true,
     "moduleResolution": "node",
-    "esModuleInterop": false
+    "esModuleInterop": false,
+    "allowJs": true
   }
 }
