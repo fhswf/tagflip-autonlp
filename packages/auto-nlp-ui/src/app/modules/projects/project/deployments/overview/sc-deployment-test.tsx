@@ -1,5 +1,5 @@
 import { useLazyQuery, useQuery } from '@apollo/client';
-import { Button, Card, Form, Input, Spin } from 'antd';
+import { Button, Card, Col, Form, Input, Row, Spin, Table } from 'antd';
 import React, { FunctionComponent } from 'react';
 import { createUseStyles } from 'react-jss';
 import { GetDeployment } from '../../../../../apollo/__generated__/GetDeployment';
@@ -72,10 +72,19 @@ const ScDeploymentTest: FunctionComponent<Props> = (props) => {
     if (!testDeploymentData) return null;
 
     const result = testDeploymentData.testDeployment[0];
+    result.key = '1';
 
-    console.log('result: %s', result);
+    const data = [ result ];
 
-    return <Card className={classes.result}>{result}</Card>;
+    console.log('result: %o', result);
+
+    const columns = [
+      { title: 'Text', dataIndex: 'text', key: 'text' },
+      { title: 'Label', dataIndex: 'label', key: 'label' },
+      { title: 'Score', dataIndex: 'score', key: 'score' },
+    ];
+
+    return <Table dataSource={data} columns={columns} />;
   };
 
   return (
