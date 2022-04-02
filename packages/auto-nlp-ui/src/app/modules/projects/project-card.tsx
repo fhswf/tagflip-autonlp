@@ -1,6 +1,7 @@
 import { Card, Col, Divider, Row, Tag, Typography } from 'antd';
 import React, { FC, PropsWithChildren } from 'react';
 import { createUseStyles } from 'react-jss';
+import { TaskType, TaskTypeLabel, TaskTypeShort } from 'auto-nlp-shared-js';
 
 const useStyles = createUseStyles({
   card: {
@@ -17,7 +18,7 @@ const useStyles = createUseStyles({
 
 interface Props extends PropsWithChildren<any> {
   title: string;
-  taskType: string;
+  taskType: TaskType;
   description: string;
   onClick?: CallableFunction;
 }
@@ -36,7 +37,9 @@ export const ProjectCard: FC<Props> = (props) => {
           <Row justify="space-between">
             <Col>{props.title}</Col>
             <Col>
-              <Tag>{props.taskType}</Tag>
+              <Tag className={TaskTypeShort.get(props.taskType)}>
+                {TaskTypeLabel.get(props.taskType)}
+              </Tag>
             </Col>
           </Row>
         }

@@ -2,6 +2,7 @@ const Webpack = require('webpack');
 const dotenv = require('dotenv').config({ path: '.webpack.env' });
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PnpWebpackPlugin = require(`pnp-webpack-plugin`);
 // const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
@@ -23,18 +24,24 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+    plugins: [PnpWebpackPlugin],
+  },
+  resolveLoader: {
+    plugins: [PnpWebpackPlugin.moduleLoader(module)],
   },
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        loader: require.resolve('babel-loader'),
+        //use: ['babel-loader'],
       },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        loader: require.resolve('babel-loader'),
+        //use: ['babel-loader'],
       },
       {
         test: /config\.json$/i,
