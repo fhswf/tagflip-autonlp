@@ -14,6 +14,9 @@ TagFlip AutoNLP is available at [autonlp.informatik.fh-swf.de](https://autonlp.i
 
 ## Building & Deploying
 
+[![release](https://github.com/fhswf/tagflip-autonlp/actions/workflows/release.yml/badge.svg)](https://github.com/fhswf/tagflip-autonlp/actions/workflows/release.yml)
+![Coverage](https://raw.githubusercontent.com/fhswf/tagflip-autonlp/main/badges/coverage-jest%20coverage.svg)
+
 ### Docker
 
 Currently, installing via Docker Compose is the easiest way to deploy the deploy the application.
