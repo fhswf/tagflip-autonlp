@@ -61,7 +61,7 @@ jobs:
         if: success() || failure()    # run this step even if previous step failed
         with:
           branches: main
-          coverage-summary-path: packages/coverage/coverage-summary.json
+          coverage-summary-path: coverage/coverage-summary.json
 
   release:
     # Only release on push to master
