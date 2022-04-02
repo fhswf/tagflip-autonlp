@@ -123,7 +123,7 @@ services:
     restart: always
 
   auto-nlp-traefik:
-    image: "traefik:v2.4"
+    image: "traefik:latest"
     container_name: auto-nlp-traefik-${ENVIRONMENT}
     command:
       - "--api.insecure=true"
@@ -132,11 +132,17 @@ services:
       - "--providers.http=true"
       - "--providers.http.endpoint=http://auto-nlp-core-${ENVIRONMENT}:${AUTONLP_CORE_PORT:-3000}/deployments/proxy/config"
       - "--entrypoints.web.address=:80"
+      - "--pilot.token=${PILOT_TOKEN}"
+      - "--accesslog=true"
+      - "--accesslog.filepath=/var/logs/traefik"
+      - "--log.level=DEBUG"
+      - "--log.filePath=/var/logs/traefik.log"
     ports:
       - "${AUTONLP_TRAEFIK_ENTRYPOINT_PORT}:80"
       - "${AUTONLP_TRAEFIK_ADMIN_PORT}:8080"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "/home/autonlp/logs:/var/logs:rw"
     networks:
       - auto-nlp-deployments
       - auto-nlp-services
@@ -229,7 +235,7 @@ services:
 
 networks:
   auto-nlp-deployments:
-    name: auto-nlp-deployments-${ENVIRONMENT}
+    name: auto-nlp-deployments
     driver: 'bridge'
   auto-nlp-services:
     name: auto-nlp-services-${ENVIRONMENT}

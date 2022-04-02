@@ -206,7 +206,7 @@
                 "sha256:5cd02f3b417a783ba84a4ec3e290ff7929009fe51f6405423cfccfadd43ba4a4",
                 "sha256:6b2df9741d06f43839a3275c4e6632f7df6487a1f181f5f46a052d3c917c3d11"
             ],
-            "version": "==2.0.0"
+            "version": "==1.6.0"
         },
         "cryptography": {
             "hashes": [
