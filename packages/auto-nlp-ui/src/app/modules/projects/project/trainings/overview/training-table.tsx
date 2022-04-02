@@ -346,7 +346,11 @@ const TrainingTable: FunctionComponent<Props> = (props) => {
         visible={deployableTrainingId}
         onSubmitted={async () => {
           setDeployableTraining(null);
-          navigate(`${match.params.id}/deployment`);
+          console.log(
+            'navigating to %s',
+            `/project/${match.params.id}/deployment`,
+          );
+          navigate(`/project/${match.params.id}/deployment`);
         }}
         onCancel={() => setDeployableTraining(null)}
       />
