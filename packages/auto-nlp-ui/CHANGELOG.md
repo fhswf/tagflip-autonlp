@@ -1,3 +1,15 @@
+# [auto-nlp-ui-v1.1.0](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-ui-v1.0.4...auto-nlp-ui-v1.1.0) (2022-04-02)
+
+
+### Bug Fixes
+
+* **ui:** navigate to deployment ([b8479ae](https://github.com/fhswf/tagflip-autonlp/commit/b8479ae7a629c410e07d18da32f2b4df07592345))
+
+
+### Features
+
+* **ui:** text classification ui ([7378c48](https://github.com/fhswf/tagflip-autonlp/commit/7378c48b9157e2361555f0d2b067b2d1223cf2c0))
+
 # [auto-nlp-ui-v1.0.4](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-ui-v1.0.3...auto-nlp-ui-v1.0.4) (2022-04-01)
 
 
