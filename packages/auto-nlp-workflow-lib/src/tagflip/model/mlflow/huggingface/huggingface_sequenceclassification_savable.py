@@ -100,8 +100,9 @@ class HuggingFaceSequenceClassificationSavable(MLflowSavable):
                 pipe = pipeline(
                     "text-classification", model=self.trained_model, tokenizer=self.tokenizer)
                 pipe_sentences = []
-                for pipe_out in pipe(KeyDataset(sentences, "text"), batch_size=8, truncation="only_first"):
-                    pipe_sentences.append(pipe_out)
+                for text, result in zip(sentences, pipe(sentences)):
+                    result["text"] = text
+                    pipe_sentences.append(result)
                 return pipe_sentences
 
         return SequenceClassificationPythonModel()

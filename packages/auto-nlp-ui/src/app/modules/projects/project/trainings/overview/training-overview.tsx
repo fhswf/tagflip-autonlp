@@ -9,7 +9,7 @@ interface OwnProps {}
 type Props = OwnProps;
 
 const TrainingOverview: FunctionComponent<Props> = (props) => {
-  const location = ""; //useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
 
   return (
