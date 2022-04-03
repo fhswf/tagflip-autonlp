@@ -5608,6 +5608,7 @@ __metadata:
     auto-nlp-shared-js: "workspace:*"
     babel-loader: ^8.2.3
     babel-polyfill: ^6.26.0
+    browserslist: latest
     chroma-js: ^2.1.2
     copy-webpack-plugin: ^10.2.4
     css-loader: ^5.2.4
@@ -6123,7 +6124,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.14.5, browserslist@npm:^4.17.5, browserslist@npm:^4.19.1":
+"browserslist@npm:^4.14.5, browserslist@npm:^4.17.5, browserslist@npm:^4.19.1, browserslist@npm:latest":
   version: 4.20.2
   resolution: "browserslist@npm:4.20.2"
   dependencies:
