@@ -20,7 +20,7 @@ const useStyles = createUseStyles({
 const App = () => {
   const breadcrumbs = useBreadcrumbs([
     {
-      path: '/project/:id',
+      path: 'project/:id',
       breadcrumb: ProjectNameBreadCrumb,
     },
   ]);
@@ -50,9 +50,9 @@ const App = () => {
           ))}
         </Breadcrumb>
         <Routes>
-          <Route path="/project/:id/*" element={<ProjectContainer />} />
-          <Route path="/project" element={<ProjectOverview />} />
-          <Route path="" element={<Navigate to="/project" />} />
+          <Route path="project/:id/*" element={<ProjectContainer />} />
+          <Route path="project" element={<ProjectOverview />} />
+          <Route path="" element={<Navigate to="project" />} />
         </Routes>
       </Content>
       <Footer style={{ textAlign: 'center' }}>

@@ -1,5 +1,6 @@
 FROM node:17.7.1-buster-slim
 
+# TODO: This only works at build-time, but we want container images suitable for test and prod
 ARG ASSET_PATH
 ENV ASSET_PATH=${ASSET_PATH}
 WORKDIR /opt/src/app

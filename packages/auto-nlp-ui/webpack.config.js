@@ -6,7 +6,7 @@ const PnpWebpackPlugin = require(`pnp-webpack-plugin`);
 // const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
-const ASSET_PATH = process.env.ASSET_PATH || '/';
+const ASSET_PATH = process.env.ASSET_PATH || './';
 
 module.exports = {
   cache: true,
@@ -20,6 +20,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     hot: true,
+    port: 8082,
   },
   devtool: 'source-map',
   resolve: {
@@ -81,7 +82,9 @@ module.exports = {
   },
   plugins: [
     new Webpack.DefinePlugin({
-      'process.env': dotenv.parsed,
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.ASSET_PATH': JSON.stringify(process.env.ASSET_PATH),
+      'process.env.GRAPHQL_URL': JSON.stringify(process.env.GRAPHQL_URL),
     }),
     new HtmlWebPackPlugin({
       template: './src/index.html',

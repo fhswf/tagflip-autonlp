@@ -1,44 +1,41 @@
 version: "3.6"
-services:
 
+services:
   auto-nlp-core:
-    container_name: auto-nlp-core-${ENVIRONMENT:-prod}
+    container_name: ${COMPOSE_PROJECT_NAME}-core
     image: ghcr.io/fhswf/auto-nlp-core
     build:
       context: .
-      args:
-        - ASSET_PATH=${ASSET_PATH}
-    ports:
-      - "${AUTONLP_CORE_PORT:-3000}:${AUTONLP_CORE_PORT:-3000}"
+#      args:
+#        - ASSET_PATH=${ASSET_PATH}
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
       - auto-nlp-huggingface-search
     networks:
       - auto-nlp-services
+    expose:
+      - ${AUTONLP_CORE_PORT:-3000}
     environment:
-      - AUTONLP_CORE_PORT=${AUTONLP_CORE_PORT:-3000}
-      - AUTONLP_CORE_PUBLIC_URL=${AUTONLP_CORE_PUBLIC_URL}
-      - AUTONLP_DEPLOYMENT_PROXY_ENTRYPOINT_URL=${AUTONLP_DEPLOYMENT_PROXY_ENTRYPOINT_URL}
-      - AUTONLP_HF_SEARCH_SERVICE_URL=http://auto-nlp-huggingface-search-${ENVIRONMENT:-prod}:${AUTONLP_HFSEARCH_PORT:-3001}
-      - AUTONLP_DEPLOYMENT_URL=http://auto-nlp-deployment-${ENVIRONMENT:-prod}:${AUTONLP_DEPLOYMENT_PORT:-3002}
-      - MONGODB_URI=${MONGODB_URI}
+      - MONGODB_URI=mongodb://${COMPOSE_PROJECT_NAME}-mongodb:27017
       - MONGODB_USER=${MONGODB_USER}
       - MONGODB_PASSWORD=${MONGODB_PASSWORD}
-      - GITHUB_TOKEN=${GITHUB_TOKEN}
-      - NODE_ENV=${AUTONLP_ENV}
+      - AUTONLP_CORE_PORT=${AUTONLP_CORE_PORT:-3000}
+#      - AUTONLP_CORE_PUBLIC_URL=${AUTONLP_CORE_PUBLIC_URL}
+#      - AUTONLP_DEPLOYMENT_PROXY_ENTRYPOINT_URL=${AUTONLP_DEPLOYMENT_PROXY_ENTRYPOINT_URL}
+#      - AUTONLP_HF_SEARCH_SERVICE_URL=http://auto-nlp-huggingface-search-${ENVIRONMENT:-prod}:${AUTONLP_HFSEARCH_PORT:-3001}
+#      - AUTONLP_DEPLOYMENT_URL=http://auto-nlp-deployment-${ENVIRONMENT:-prod}:${AUTONLP_DEPLOYMENT_PORT:-3002}
+#      - GITHUB_TOKEN=${GITHUB_TOKEN}
+#      - NODE_ENV=${AUTONLP_ENV}
     labels:
       - traefik.enable=true
-      - traefik.http.routers.auto-nlp-core-test.rule=PathPrefix(`/auto-nlp-core-${ENVIRONMENT}`)
-      - traefik.http.routers.auto-nlp-core.rule=PathPrefix(`/auto-nlp-core`)
-      - traefik.http.routers.auto-nlp-core-test.middlewares=auto-nlp-core-test@docker
-      - traefik.http.routers.auto-nlp-core.middlewares=auto-nlp-core@docker
-      - traefik.http.middlewares.auto-nlp-core.stripprefix.prefixes=/auto-nlp-core
-      - traefik.http.middlewares.auto-nlp-core-test.stripprefix.prefixes=/auto-nlp-core-${ENVIRONMENT}
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-core.rule=PathPrefix(`/${ENVIRONMENT}/core`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-core.middlewares=${COMPOSE_PROJECT_NAME}-core@docker
+      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-core.stripprefix.prefixes=/${ENVIRONMENT}/core
     restart: always
 
   auto-nlp-huggingface-search:
-    container_name: auto-nlp-huggingface-search-${ENVIRONMENT:-prod}
+    container_name: ${COMPOSE_PROJECT_NAME}-huggingface-search
     image: ghcr.io/fhswf/auto-nlp-huggingface-search
     build:
       context: packages/auto-nlp-huggingface-search
@@ -52,10 +49,15 @@ services:
       - auto-nlp-services
     environment:
       - PYTHON_ENV=${AUTONLP_ENV}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-mlflow.rule=PathPrefix(`/${ENVIRONMENT}/mlflow`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-mlflow.middlewares=${COMPOSE_PROJECT_NAME}-core@docker
+      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-mlflow.stripprefix.prefixes=/${ENVIRONMENT}/mlflow
     restart: always
 
   auto-nlp-deployment:
-    container_name: auto-nlp-deployment-${ENVIRONMENT}
+    container_name: ${COMPOSE_PROJECT_NAME}-deployment
     image: ghcr.io/fhswf/auto-nlp-deployment
     build:
       context: packages/auto-nlp-deployment
@@ -94,7 +96,7 @@ services:
     restart: always
 
   auto-nlp-deployment-executor:
-    container_name: auto-nlp-deployment-executor-${ENVIRONMENT}
+    container_name: ${COMPOSE_PROJECT_NAME}-deployment-executor
     image: ghcr.io/fhswf/auto-nlp-deployment
     entrypoint: pipenv run dramatiq --processes ${DRAMATIQ_PROCS:-10} --path="./src" main_dramatiq
     deploy:
@@ -124,7 +126,7 @@ services:
 
   auto-nlp-traefik:
     image: "traefik:latest"
-    container_name: auto-nlp-traefik-${ENVIRONMENT}
+    container_name: ${COMPOSE_PROJECT_NAME}-traefik
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"
@@ -150,7 +152,7 @@ services:
 
   auto-nlp-redis:
     image: "redis:latest"
-    container_name: auto-nlp-redis-${ENVIRONMENT}
+    container_name: ${COMPOSE_PROJECT_NAME}-redis
     expose:
       - "6379"
     networks:
@@ -159,9 +161,9 @@ services:
 
   auto-nlp-mongodb:
     image: "mongo:latest"
-    container_name: auto-nlp-mongodb-${ENVIRONMENT}
+    container_name: ${COMPOSE_PROJECT_NAME}-mongodb
     volumes:
-      - "/home/autonlp/mongodb/data-${ENVIRONMENT}:/data/db"
+      - "/home/autonlp/mongodb/${COMPOSE_PROJECT_NAME}:/data/db"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USER}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
@@ -171,26 +173,31 @@ services:
       - auto-nlp-services
     restart: always
 
-  auto-nlp-mlflow-tracking:
+  auto-nlp-mlflow:
     image: "ghcr.io/fhswf/mlflow-tracking-server:latest"
-    container_name: auto-nlp-mlflow-tracking-${ENVIRONMENT}
+    container_name: ${COMPOSE_PROJECT_NAME}-mlflow
     volumes:
       - "/home/autonlp/mlflow:/data"
-    ports:
-      - ${MLFLOW_TRACKING_PORT:-3005}:5000
+    expose:
+      - 5000
     environment:
       - BACKEND_STORE_URI=${BACKEND_STORE_URI:-sqlite:///data/sqlite.db}
       - BUCKET_URI_OR_LOCAL_PATH=${BUCKET_URI_OR_LOCAL_PATH:-/data/mlruns}
-      - MLFLOW_S3_ENDPOINT_URL=${MLFLOW_S3_ENDPOINT_URL:-http://auto-nlp-minio:9000}
+      - MLFLOW_S3_ENDPOINT_URL=${COMPOSE_PROJECT_NAME}-minio:9000
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
     networks:
       - auto-nlp-services
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-mlflow.rule=PathPrefix(`/${ENVIRONMENT}/mlflow`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-mlflow.middlewares=${COMPOSE_PROJECT_NAME}-core@docker
+      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-mlflow.stripprefix.prefixes=/${ENVIRONMENT}/mlflow
     restart: always
 
   auto-nlp-minio:
     image: minio/minio
-    container_name: auto-nlp-minio-${ENVIRONMENT}
+    container_name: ${COMPOSE_PROJECT_NAME}-minio
     command: server /data --console-address ":9001"
     volumes:
       - "/home/autonlp/minio:/data"
@@ -200,9 +207,6 @@ services:
     expose:
       - "9000"
       - "9001"
-    ports:
-      - "${AUTONLP_MINIO_PORT}:9000"
-      - "${AUTONLP_MINIO_CONSOLE_PORT}:9001"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
       interval: 30s
@@ -235,8 +239,8 @@ services:
 
 networks:
   auto-nlp-deployments:
-    name: auto-nlp-deployments
+    name: autonlp-deployments
     driver: 'bridge'
   auto-nlp-services:
-    name: auto-nlp-services-${ENVIRONMENT}
+    name: ${COMPOSE_PROJECT_NAME}-services
 
