@@ -6,8 +6,10 @@ services:
     image: ghcr.io/fhswf/auto-nlp-core
     build:
       context: .
-#      args:
-#        - ASSET_PATH=${ASSET_PATH}
+      target: core
+      args:
+        - ASSET_PATH=${ASSET_PATH}
+        - GRAPHQL_URL=${GRAPHQL_URL}
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
@@ -21,9 +23,10 @@ services:
       - MONGODB_USER=${MONGODB_USER}
       - MONGODB_PASSWORD=${MONGODB_PASSWORD}
       - AUTONLP_CORE_PORT=${AUTONLP_CORE_PORT:-3000}
-#      - AUTONLP_CORE_PUBLIC_URL=${AUTONLP_CORE_PUBLIC_URL}
-#      - AUTONLP_DEPLOYMENT_PROXY_ENTRYPOINT_URL=${AUTONLP_DEPLOYMENT_PROXY_ENTRYPOINT_URL}
-#      - AUTONLP_HF_SEARCH_SERVICE_URL=http://auto-nlp-huggingface-search-${ENVIRONMENT:-prod}:${AUTONLP_HFSEARCH_PORT:-3001}
+      - AUTONLP_HF_SEARCH_SERVICE_URL=http://${COMPOSE_PROJECT_NAME}-huggingface-search:${AUTONLP_HFSEARCH_PORT:-3001}
+      - AUTONLP_DEPLOYMENT_URL=http://${COMPOSE_PROJECT_NAME}-deployment:${AUTONLP_DEPLOYMENT_PORT:-3002}
+      - AUTONLP_CORE_PUBLIC_URL=${AUTONLP_CORE_PUBLIC_URL}
+      - AUTONLP_DEPLOYMENT_PROXY_ENTRYPOINT_URL=${AUTONLP_DEPLOYMENT_PROXY_ENTRYPOINT_URL}
 #      - AUTONLP_DEPLOYMENT_URL=http://auto-nlp-deployment-${ENVIRONMENT:-prod}:${AUTONLP_DEPLOYMENT_PORT:-3002}
 #      - GITHUB_TOKEN=${GITHUB_TOKEN}
 #      - NODE_ENV=${AUTONLP_ENV}
@@ -33,6 +36,25 @@ services:
       - traefik.http.routers.${COMPOSE_PROJECT_NAME}-core.middlewares=${COMPOSE_PROJECT_NAME}-core@docker
       - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-core.stripprefix.prefixes=/${ENVIRONMENT}/core
     restart: always
+
+  auto-nlp-nginx:
+    container_name: ${COMPOSE_PROJECT_NAME}-nginx
+    image: ghcr.io/fhswf/auto-nlp-nginx
+    build:
+      context: .
+      target: nginx
+      args:
+        - ASSET_PATH=${ASSET_PATH}
+        - GRAPHQL_URL=${GRAPHQL_URL}
+    expose:
+      - 80
+    networks:
+      - auto-nlp-services
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-nginx.rule=PathPrefix(`/${ENVIRONMENT}/static`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-nginx.middlewares=${COMPOSE_PROJECT_NAME}-nginx@docker
+      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-nginx.stripprefix.prefixes=/${ENVIRONMENT}/static
 
   auto-nlp-huggingface-search:
     container_name: ${COMPOSE_PROJECT_NAME}-huggingface-search
