@@ -7,9 +7,9 @@ on:
         type: environment
         required: true
 
-  jobs:
-    deploy:
-      runs-on: [self-hosted, deployment]
-      steps:  
-        - name: Log deployment
-          run: echo Deploying on ${{github.event.input.environment}} 
+jobs:
+  deploy:
+    runs-on: [self-hosted, deployment]
+    steps:  
+      - name: Log deployment
+        run: echo Deploying on ${{github.event.input.environment}} 
