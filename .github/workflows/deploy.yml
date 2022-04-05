@@ -24,4 +24,7 @@ jobs:
         run: |
           docker compose -f docker-compose.yml --env-file /home/autonlp/envs/docker-${{github.event.inputs.environment}}.env build
           docker compose -f docker-compose.yml --env-file /home/autonlp/envs/docker-${{github.event.inputs.environment}}.env push
+
+      - name: Deploy container
+        run: |
           docker compose -f docker-compose.yml --env-file /home/autonlp/envs/docker-${{github.event.inputs.environment}}.env up -d

@@ -27,9 +27,10 @@ services:
       - AUTONLP_DEPLOYMENT_URL=http://${COMPOSE_PROJECT_NAME}-deployment:${AUTONLP_DEPLOYMENT_PORT:-3002}
       - AUTONLP_CORE_PUBLIC_URL=${AUTONLP_CORE_PUBLIC_URL}
       - AUTONLP_DEPLOYMENT_PROXY_ENTRYPOINT_URL=${AUTONLP_DEPLOYMENT_PROXY_ENTRYPOINT_URL}
+      - NODE_ENV=${ENVIRONMENT}
 #      - AUTONLP_DEPLOYMENT_URL=http://auto-nlp-deployment-${ENVIRONMENT:-prod}:${AUTONLP_DEPLOYMENT_PORT:-3002}
 #      - GITHUB_TOKEN=${GITHUB_TOKEN}
-#      - NODE_ENV=${AUTONLP_ENV}
+
     labels:
       - traefik.enable=true
       - traefik.http.routers.${COMPOSE_PROJECT_NAME}-core.rule=PathPrefix(`/${ENVIRONMENT}/core`)
