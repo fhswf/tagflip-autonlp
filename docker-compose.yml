@@ -85,7 +85,7 @@ services:
     build:
       context: packages/auto-nlp-deployment
       args:
-        PORT: ${AUTONLP_DEPLOYMENT_PORT:-3002}
+        PORT: ${AUTONLP_DEPLOYMENT_PORT}
     deploy:
       resources:
         reservations:
@@ -94,7 +94,7 @@ services:
               count: 3
               capabilities: [gpu]
     expose:
-      - "${AUTONLP_DEPLOYMENT_PORT:-3002}"
+      - "${AUTONLP_DEPLOYMENT_PORT}"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
@@ -104,8 +104,7 @@ services:
       - GITHUB_TOKEN=${GITHUB_TOKEN}
       - REDIS_HOST=${REDIS_HOST:-auto-nlp-redis}
       - REDIS_PORT=${REDIS_PORT:-6379}
-#      - REDIS_USER=${REDIS_USER}
-#      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - AUTONLP_DEPLOYMENT_PORT=${AUTONLP_DEPLOYMENT_PORT}
       - MLFLOW_TRACKING_URI=${MLFLOW_TRACKING_URI}
       - MLFLOW_TRACKING_USERNAME=${MLFLOW_TRACKING_USERNAME}
       - MLFLOW_TRACKING_PASSWORD=${MLFLOW_TRACKING_PASSWORD}
@@ -113,6 +112,7 @@ services:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - PYTHON_ENV=${AUTONLP_ENV}
+      - NODE_ENV=${ENVIRONMENT}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/autonlp/.ssh:/root/.ssh:ro

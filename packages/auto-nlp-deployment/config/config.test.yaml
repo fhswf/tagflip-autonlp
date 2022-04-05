@@ -1,0 +1,42 @@
+dataset-providers:
+  tagflip.old:
+    type: "tagflip"
+    config:
+      api: 'https://jupiter.fh-swf.de/tagflip/api/v1'
+
+  huggingface:
+    type: "huggingface"
+
+training-environments:
+  docker:
+    - name: "jupiter"
+      description: Docker training on some-docker-host
+      ssh:
+        username: "autonlp"
+        host: "jupiter.fh-swf.de"
+        key_filename: "/.ssh/id_ed25519"
+        port: 22
+      parameters:
+        gpu_id: { choice: [ 0,1,2 ] }
+
+    - name: "localhost"
+      parameters:
+        gpu_id: { choice: [ 0 ] }
+
+  kubernetes:
+    - name: "minikube"
+      description: Local kubernetes cluster
+      repository: "some-private-docker-registry"
+
+deployment-environments:
+  docker:
+    - name: "jupiter.fh-swf.de"
+      description: "Docker environment on jupiter.fh-swf.de"
+      entrypoint: "https://jupiter.fh-swf.de"
+      parameters:
+        worker_count: { range: [ 1, 12 ] }
+
+docker-registries:
+  - name: "ghcr.io"
+    url: "https://ghcr.io"
+    username: "cgawron"
