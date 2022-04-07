@@ -55,3 +55,4 @@ CMD ["yarn", "workspace", "auto-nlp-core", "run", "start"]
 FROM nginx:latest as nginx
 
 COPY --from=build /opt/src/app/packages/auto-nlp-ui/build/* /usr/share/nginx/html/autonlp/
+COPY nginx/autonlp.conf /etc/nginx/conf.d/
