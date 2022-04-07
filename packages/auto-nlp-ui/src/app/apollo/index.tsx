@@ -6,7 +6,7 @@ import {
 } from '@apollo/client';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
-import config from '../../../config/config.json';
+import config from '../../../config/config';
 import { cache } from './cache';
 
 const httpLink = new HttpLink({
@@ -43,7 +43,7 @@ const httpLink = new HttpLink({
 //   }
 // `;
 
-console.log(`Creating ApolloClient with endpoint` + config.api);
+console.log(`Creating ApolloClient with endpoint ` + config.api);
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache,
