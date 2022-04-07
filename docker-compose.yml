@@ -74,9 +74,9 @@ services:
       - PYTHON_ENV=${AUTONLP_ENV}
     labels:
       - traefik.enable=true
-      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-mlflow.rule=PathPrefix(`/${ENVIRONMENT}/mlflow`)
-      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-mlflow.middlewares=${COMPOSE_PROJECT_NAME}-core@docker
-      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-mlflow.stripprefix.prefixes=/${ENVIRONMENT}/mlflow
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-hfsearch.rule=PathPrefix(`/${ENVIRONMENT}/hfsearch`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-hfsearch.middlewares=${COMPOSE_PROJECT_NAME}-hfsearch@docker
+      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-hfsearch.stripprefix.prefixes=/${ENVIRONMENT}/hfsearch
     restart: always
 
   auto-nlp-deployment:
@@ -138,8 +138,10 @@ services:
       - GITHUB_TOKEN=${GITHUB_TOKEN}
       - REDIS_HOST=${REDIS_HOST:-auto-nlp-redis}
       - REDIS_PORT=${REDIS_PORT:-6379}
-#      - REDIS_USER=${REDIS_USER}
-#      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - MLFLOW_TRACKING_URI=${MLFLOW_TRACKING_URI}
+      - MLFLOW_TRACKING_USERNAME=${MLFLOW_TRACKING_USERNAME}
+      - MLFLOW_TRACKING_PASSWORD=${MLFLOW_TRACKING_PASSWORD}
+      - MLFLOW_S3_ENDPOINT_URL=${MLFLOW_S3_ENDPOINT_URL:-http://auto-nlp-minio:9000}      
       - PYTHON_ENV=${AUTONLP_ENV}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -214,7 +216,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.${COMPOSE_PROJECT_NAME}-mlflow.rule=PathPrefix(`/${ENVIRONMENT}/mlflow`)
-      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-mlflow.middlewares=${COMPOSE_PROJECT_NAME}-core@docker
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-mlflow.middlewares=${COMPOSE_PROJECT_NAME}-mlflow@docker
       - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-mlflow.stripprefix.prefixes=/${ENVIRONMENT}/mlflow
     restart: always
 
