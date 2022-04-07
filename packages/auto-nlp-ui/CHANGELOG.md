@@ -1,3 +1,15 @@
+# [auto-nlp-ui-v1.2.0](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-ui-v1.1.0...auto-nlp-ui-v1.2.0) (2022-04-07)
+
+
+### Bug Fixes
+
+* remove broken yaml util ([f95fbb9](https://github.com/fhswf/tagflip-autonlp/commit/f95fbb9fd8a9d337e41e201d1c8858f77d1757af))
+
+
+### Features
+
+* staged deployment ([02a0a5f](https://github.com/fhswf/tagflip-autonlp/commit/02a0a5f7acd18abc04b5abbfe9491786d5184661))
+
 # [auto-nlp-ui-v1.1.0](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-ui-v1.0.4...auto-nlp-ui-v1.1.0) (2022-04-02)
 
 
