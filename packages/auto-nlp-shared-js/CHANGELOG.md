@@ -1,3 +1,10 @@
+# [auto-nlp-shared-js-v1.0.1](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-shared-js-v1.0.0...auto-nlp-shared-js-v1.0.1) (2022-04-07)
+
+
+### Bug Fixes
+
+* remove broken yaml util ([f95fbb9](https://github.com/fhswf/tagflip-autonlp/commit/f95fbb9fd8a9d337e41e201d1c8858f77d1757af))
+
 # auto-nlp-shared-js-v1.0.0 (2022-03-22)
 
 
