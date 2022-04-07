@@ -1,4 +1,4 @@
-name: ci
+name: CI build
 
 # RunEntity the workflow when a Pull Request is opened or when changes are pushed to master
 on:
@@ -94,3 +94,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy test
+        uses: ./.github/workflows/deploy.yml
+        with:
+          environment: test

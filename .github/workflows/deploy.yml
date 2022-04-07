@@ -1,7 +1,13 @@
-name: deploy
+name: CD deployment
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        required: true
+  
+  workflow_call:
     inputs:
       environment:
         type: environment
