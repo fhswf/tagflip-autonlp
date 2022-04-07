@@ -96,6 +96,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy test
-        uses: ./.github/workflows/deploy.yml
+        uses: benc-uk/workflow-dispatch@v1
         with:
-          environment: test
+          workflow: CD deployment
+          inputs: '{ "environment": "test" }' 

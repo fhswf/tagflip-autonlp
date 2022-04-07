@@ -6,12 +6,6 @@ on:
       environment:
         type: environment
         required: true
-  
-  workflow_call:
-    inputs:
-      environment:
-        type: environment
-        required: true
 
 jobs:
   deploy:
