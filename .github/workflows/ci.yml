@@ -97,6 +97,9 @@ jobs:
 
   deploy:
     environment: test
-    uses: ./.github/workflows/deploy.yml
-    with:
-      environment: jobs.deploy.environment
+    runs-on: [self-hosted, deployment]
+    steps:
+      - name: Deploy on test
+        uses: ./.github/workflows/deploy.yml
+        with:
+          environment: ${{ jobs.deploy.environment }}
