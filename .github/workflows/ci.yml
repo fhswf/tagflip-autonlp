@@ -66,6 +66,7 @@ jobs:
   release:
     # Only release on push to master
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: test
     runs-on: ubuntu-latest
     steps:
       # Fetch the latest commit
@@ -96,8 +97,24 @@ jobs:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
+    needs: [ test, release ]
     environment: test
     runs-on: [self-hosted, deployment]
-    steps:
-      - name: Deploy on test
-        uses: ./.github/workflows/deploy.yml
+    steps:  
+      # Fetch the latest commit
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Log deployment
+        run: |
+          echo Deploying on ${{github.event.inputs.environment}} 
+          test -e /home/autonlp/envs/docker-${{job.environment}}.env || exit 1
+      
+      - name: Build images
+        run: |
+          docker compose -f docker-compose.yml --env-file /home/autonlp/envs/docker-test.env build
+          docker compose -f docker-compose.yml --env-file /home/autonlp/envs/docker-test.env push
+
+      - name: Deploy container
+        run: |
+          docker compose -f docker-compose.yml --env-file /home/autonlp/envs/docker-test.env up -d
