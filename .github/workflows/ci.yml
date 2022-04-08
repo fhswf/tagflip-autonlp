@@ -107,8 +107,8 @@ jobs:
         
       - name: Log deployment
         run: |
-          echo Deploying on ${{github.event.inputs.environment}} 
-          test -e /home/autonlp/envs/docker-${{job.environment}}.env || exit 1
+          echo Deploying on test 
+          test -e /home/autonlp/envs/docker-test.env || exit 1
       
       - name: Build images
         run: |
