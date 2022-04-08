@@ -5,14 +5,12 @@ on:
     inputs:
       environment:
         type: environment
-        default: test
         required: true
 
   workflow_call:
     inputs:
       environment:
         type: environment
-        default: test 
         required: true
 
 jobs:
