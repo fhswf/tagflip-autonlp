@@ -9,9 +9,6 @@ on:
         required: true
 
   workflow_call:
-    workflows: [CI build]
-    types:
-      - completed
     inputs:
       environment:
         type: environment
