@@ -5,6 +5,17 @@ on:
     inputs:
       environment:
         type: environment
+        default: test
+        required: true
+
+  workflow_run:
+    workflows: [CI build]
+    types:
+      - completed
+    inputs:
+      environment:
+        type: environment
+        default: test 
         required: true
 
 jobs:
