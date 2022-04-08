@@ -96,6 +96,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
+    environment: test
     uses: ./.github/workflows/deploy.yml
     with:
-      environment: test
+      environment: jobs.deploy.environment
