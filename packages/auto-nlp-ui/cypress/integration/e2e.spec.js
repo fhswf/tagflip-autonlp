@@ -50,10 +50,17 @@ describe('test main view', () => {
     cy.get('button').contains('Plan new').click();
     cy.contains('BERT German').click();
     cy.contains('Minimal configuration').click();
-    cy.get('#configure_parameters_form_hyperParameters_num_train_epochs')
-      .clear()
-      .type('2');
+    //cy.get('#configure_parameters_form_hyperParameters_num_train_epochs')
+    //  .clear()
+    //  .type('2');
     cy.contains('Next').click();
+    cy.get('#schedule_training_form_runtime_name').click();
+    cy.get('.ant-card-head-title').contains('jupiter').click();
+
+    cy.get('#schedule_training_form_runtime_parameters_gpu_id').click();
+    cy.get('.ant-select-item-option-content').contains('0').click();
+
     cy.contains('Finish').click();
+    cy.contains('Training scheduled');
   });
 });
