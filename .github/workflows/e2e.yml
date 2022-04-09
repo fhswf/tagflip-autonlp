@@ -9,6 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Checkout
@@ -32,11 +33,17 @@ jobs:
           
       - name: Run tests
         run: yarn workspace auto-nlp-ui exec cypress run -r junit --spec cypress/integration/e2e.spec.js
+      
+      - name: Archive test result
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-result
+          path: '**/test-results.xml'
 
       - name: Test Report
         uses: dorny/test-reporter@v1
         if: success() || failure()    # run this step even if previous step failed
         with:
-          name: E2E Tests            # Name of the check run which will be created
-          path: '**/test-results.xml'        # Path to test results
+          name: E2E Tests             # Name of the check run which will be created
+          path: '**/test-results.xml' # Path to test results
           reporter: jest-junit        # Format of test results
