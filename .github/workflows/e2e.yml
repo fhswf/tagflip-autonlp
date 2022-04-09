@@ -17,11 +17,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 17.x
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+          
+      - name: Install Pipenv
+        run: pip install pipenv
 
       - name: Run tests
         run: |
           yarn install 
           yarn workspace auto-nlp-ui exec cypress run --spec cypress/integration/e2e.spec.js
-          
+
 
