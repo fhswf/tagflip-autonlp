@@ -8,7 +8,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest --runInBand --coverage"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.1",
