@@ -1,6 +1,6 @@
 {
   "name": "auto-nlp-ui",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Automated training and deployment of NER Models.",
   "main": "index.js",
   "scripts": {
@@ -55,6 +55,7 @@
     "app-settings-loader": "^2.0.0",
     "babel-loader": "^8.2.3",
     "babel-polyfill": "^6.26.0",
+    "browserslist": "latest",
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^5.2.4",
     "cypress": "^9.5.3",

@@ -1,4 +1,4 @@
-name: release
+name: CI build
 
 # RunEntity the workflow when a Pull Request is opened or when changes are pushed to master
 on:
@@ -66,6 +66,7 @@ jobs:
   release:
     # Only release on push to master
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: test
     runs-on: ubuntu-latest
     steps:
       # Fetch the latest commit
@@ -94,3 +95,26 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    needs: [ test, release ]
+    environment: test
+    runs-on: [self-hosted, deployment]
+    steps:  
+      # Fetch the latest commit
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Log deployment
+        run: |
+          echo Deploying on test 
+          test -e /home/autonlp/envs/docker-test.env || exit 1
+      
+      - name: Build images
+        run: |
+          docker compose -f docker-compose.yml --env-file /home/autonlp/envs/docker-test.env build
+          docker compose -f docker-compose.yml --env-file /home/autonlp/envs/docker-test.env push
+
+      - name: Deploy container
+        run: |
+          docker compose -f docker-compose.yml --env-file /home/autonlp/envs/docker-test.env up -d

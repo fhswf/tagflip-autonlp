@@ -1,0 +1,36 @@
+name: CD deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        required: true
+
+  workflow_call:
+    inputs:
+      environment:
+        type: environment
+        required: true
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, deployment]
+    steps:  
+      # Fetch the latest commit
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Log deployment
+        run: |
+          echo Deploying on ${{github.event.inputs.environment}} 
+          test -e /home/autonlp/envs/docker-${{github.event.inputs.environment}}.env || exit 1
+      
+      - name: Build images
+        run: |
+          docker compose -f docker-compose.yml --env-file /home/autonlp/envs/docker-${{github.event.inputs.environment}}.env build
+          docker compose -f docker-compose.yml --env-file /home/autonlp/envs/docker-${{github.event.inputs.environment}}.env push
+
+      - name: Deploy container
+        run: |
+          docker compose -f docker-compose.yml --env-file /home/autonlp/envs/docker-${{github.event.inputs.environment}}.env up -d

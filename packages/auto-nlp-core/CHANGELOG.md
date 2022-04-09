@@ -1,3 +1,10 @@
+# [auto-nlp-core-v1.0.4](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-core-v1.0.3...auto-nlp-core-v1.0.4) (2022-04-07)
+
+
+### Bug Fixes
+
+* remove broken yaml util ([f95fbb9](https://github.com/fhswf/tagflip-autonlp/commit/f95fbb9fd8a9d337e41e201d1c8858f77d1757af))
+
 # [auto-nlp-core-v1.0.3](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-core-v1.0.2...auto-nlp-core-v1.0.3) (2022-03-23)
 
 
