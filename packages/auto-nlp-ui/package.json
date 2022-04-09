@@ -7,7 +7,8 @@
     "start": "NODE_ENV=development yarn run webpack serve --progress --mode development",
     "build": "yarn run webpack --mode=production",
     "build:production": "NODE_ENV=production yarn run webpack --mode=production",
-    "test": "echo \"Warning: no tests specified\""
+    "test": "echo \"Warning: no tests specified\"",
+    "test:e2e": "cypress run --spec e2e.spec.js"
   },
   "author": "Timo Neuhaus",
   "private": true,
