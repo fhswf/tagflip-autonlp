@@ -32,4 +32,10 @@ jobs:
           yarn install 
           yarn workspace auto-nlp-ui exec cypress run --spec cypress/integration/e2e.spec.js
 
-
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()    # run this step even if previous step failed
+        with:
+          name: E2E Tests            # Name of the check run which will be created
+          path: '**/test-results.xml'        # Path to test results
+          reporter: jest-junit        # Format of test results
