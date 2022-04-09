@@ -27,10 +27,11 @@ jobs:
       - name: Install Pipenv
         run: pip install pipenv
 
+      - name: Install yarn packages
+        run: yarn install 
+          
       - name: Run tests
-        run: |
-          yarn install 
-          yarn workspace auto-nlp-ui exec cypress run --spec cypress/integration/e2e.spec.js
+        run: yarn workspace auto-nlp-ui exec cypress run -r junit --spec cypress/integration/e2e.spec.js
 
       - name: Test Report
         uses: dorny/test-reporter@v1
