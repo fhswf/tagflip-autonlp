@@ -8,6 +8,7 @@ describe('test main view', () => {
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
     cy.visit('https://autonlp.informatik.fh-swf.de/test/static/');
+    cy.wait(2000);
   });
 
   it('Project selector should be present', () => {
@@ -25,6 +26,15 @@ describe('test main view', () => {
   });
 
   it('Set dataset', () => {
+    cy.on('uncaught:exception', (err, runnable) => {
+      // returning false here prevents Cypress from
+      // failing the test
+      if (err.message.includes('ResizeObserver')) {
+        return false;
+      } else {
+        return true;
+      }
+    });
     cy.contains(name).click();
     cy.get('#dataset').click();
     cy.contains('huggingface').click();

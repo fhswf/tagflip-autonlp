@@ -32,3 +32,5 @@
 # Test results
 **/junit.xml
 packages/coverage
+coverage
+packages/auto-nlp-ui/cypress/videos
