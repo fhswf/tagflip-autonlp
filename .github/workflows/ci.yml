@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         # RunEntity the steps below with the following versions of Node.js
-        node-version: [ 14.x 17.x ]
+        node-version: [ 14.x, 17.x ]
         python-version: [ 3.9 ]
 
     steps:
