@@ -1,0 +1,27 @@
+name: Run e2e tests
+
+on:
+  workflow_run:
+    workflows: [CI build]
+    types:
+      - completed
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Run tests
+        run: |
+          yarn install 
+          yarn workspace auto-nlp-ui exec cypress run --spec cypress/integration/e2e.spec.js
+          
+
