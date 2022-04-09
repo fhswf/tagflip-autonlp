@@ -44,6 +44,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
     HttpModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
+      cors: true,
       autoSchemaFile: path.join(process.cwd(), 'src/schema.gql'),
       installSubscriptionHandlers: true,
     })
