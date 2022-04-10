@@ -1,6 +1,6 @@
 {
   "name": "auto-nlp-core",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Automated training and deployment of NLP Models.",
   "author": "Timo Neuhaus",
   "private": true,

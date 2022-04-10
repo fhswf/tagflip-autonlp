@@ -1,3 +1,10 @@
+# [auto-nlp-core-v1.0.5](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-core-v1.0.4...auto-nlp-core-v1.0.5) (2022-04-09)
+
+
+### Bug Fixes
+
+* enable CORS for graphql ([#35](https://github.com/fhswf/tagflip-autonlp/issues/35)) ([70baa58](https://github.com/fhswf/tagflip-autonlp/commit/70baa58f6f8c9f57ec87a975f2abb3c493509e65))
+
 # [auto-nlp-core-v1.0.4](https://github.com/fhswf/tagflip-autonlp/compare/auto-nlp-core-v1.0.3...auto-nlp-core-v1.0.4) (2022-04-07)
 
 
