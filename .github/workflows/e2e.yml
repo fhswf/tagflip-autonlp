@@ -34,12 +34,15 @@ jobs:
       - name: Run tests
         run: yarn workspace auto-nlp-ui exec cypress run -r junit --spec cypress/integration/e2e.spec.js
       
-      - name: Archive test result
-        uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3
+        if: success() || failure()
         with:
-          name: test-result
-          path: '**/test-results.xml'
-
+          name: test-results
+          path: |
+            **/test-results.xml
+            packages/auto-nlp-ui/cypress/screenshots/
+            packages/auto-nlp-ui/cypress/videos/
+ 
       - name: Test Report
         uses: dorny/test-reporter@v1
         if: success() || failure()    # run this step even if previous step failed
