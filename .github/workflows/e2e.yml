@@ -32,11 +32,7 @@ jobs:
         run: yarn install 
           
       - name: Run tests
-        uses: cypress-io/github-action@v2
-        with: 
-          project: packages/auto-nlp-ui
-          spec: cypress/integration/e2e.spec.js
-          #start: yarn workspace auto-nlp-ui exec cypress run -r junit --spec cypress/integration/e2e.spec.js
+        run: yarn workspace auto-nlp-ui exec cypress run -r junit --spec cypress/integration/e2e.spec.js
       
       - uses: actions/upload-artifact@v3
         if: success() || failure()
